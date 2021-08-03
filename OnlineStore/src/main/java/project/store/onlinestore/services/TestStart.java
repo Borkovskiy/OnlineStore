@@ -20,7 +20,7 @@ public class TestStart {
     public void saveToBase(){
         for(int i=0;i<9;i++) {
 
-        File folder = new File("./OnlineStore/product");
+        File folder = new File("product");
 
         HashMap<Integer,byte[]> productImage= new HashMap<>();
         Product product=new Product();
