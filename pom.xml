@@ -106,7 +106,7 @@
                 </executions>
                 <configuration>
                     <nodeVersion>v14.15.4</nodeVersion>
-                    <workingDirectory>src/frontend</workingDirectory>
+                    <workingDirectory>src/main/js</workingDirectory>
                 </configuration>
 
             </plugin>
@@ -125,7 +125,7 @@
                             <outputDirectory>target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/frontend/build</directory>
+                                    <directory>src/main/js/build</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
