@@ -19,13 +19,12 @@ public class TestStart {
 
     public void saveToBase(){
         for(int i=0;i<9;i++) {
-        File folder1=new File ("folder");
-        folder1.mkdirs();
-        File folder = new File("product");
+
+        File folder = new File("./OnlineStore/product");
+
         HashMap<Integer,byte[]> productImage= new HashMap<>();
         Product product=new Product();
         for(File f:folder.listFiles()){
-
             int number= parseInt(f.getName());
             try {
                 byte[] fByte=fileToByte(f);
