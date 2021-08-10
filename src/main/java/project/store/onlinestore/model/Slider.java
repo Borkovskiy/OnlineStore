@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class Slider {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Lob
     private byte [] image;
