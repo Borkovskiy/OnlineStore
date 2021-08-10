@@ -22,7 +22,7 @@ public class TestStart {
     }
 
     public void saveToBase() {
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i < 10; i++) {
             Product product = new Product();
             HashMap<Integer, byte[]> productImage = new HashMap<>();
             productImage = getImage(i);
