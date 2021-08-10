@@ -27,11 +27,11 @@ public class TestStart {
             HashMap<Integer, byte[]> productImage = new HashMap<>();
             productImage = getImage(i);
             product.setProductImage(productImage);
-            product.setName("test"+i);
-            product.setColor("test"+i);
+            product.setName("test Name"+i);
+            product.setColor("test Color"+i);
             product.setPrice(875.00+i);
-            product.setShortDescription("test"+i);
-            product.setDescription("test"+i);
+            product.setShortDescription("test Short Description"+i);
+            product.setDescription("test Description"+i);
             productService.addProduct(product);
         }
         saveToBaseSlider();
