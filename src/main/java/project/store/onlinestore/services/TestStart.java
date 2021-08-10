@@ -22,16 +22,16 @@ public class TestStart {
     }
 
     public void saveToBase() {
-        for (int i = 0; i < 9; i++) {
+        for (int i = 1; i < 8; i++) {
             Product product = new Product();
             HashMap<Integer, byte[]> productImage = new HashMap<>();
-            productImage = getImage();
+            productImage = getImage(i);
             product.setProductImage(productImage);
-            product.setName("DOLCE & GABBANA");
-            product.setColor("Yellow");
-            product.setPrice(875.00);
-            product.setShortDescription("Printed cotton-blend poplin bralette");
-            product.setDescription("Dolce & Gabbana's printed cotton-blend poplin bralette depicts ceremonial standards held by jousting knights. It's cut for a close fit with boning down each side and traced with picot trims. Style yours with a white skirt to make the colors really pop.");
+            product.setName("test"+i);
+            product.setColor("test"+i);
+            product.setPrice(875.00+i);
+            product.setShortDescription("test"+i);
+            product.setDescription("test"+i);
             productService.addProduct(product);
         }
         saveToBaseSlider();
@@ -39,8 +39,8 @@ public class TestStart {
 
 
 
-    private static HashMap<Integer, byte[]> getImage() {
-        File folder = new File("product");
+    private static HashMap<Integer, byte[]> getImage(int i) {
+        File folder = new File("product"+i);
         HashMap<Integer, byte[]> productImage = new HashMap<>();
         for (File f : folder.listFiles()) {
             int number = parseInt(f.getName());
