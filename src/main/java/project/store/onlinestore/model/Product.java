@@ -3,7 +3,7 @@ package project.store.onlinestore.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import project.store.onlinestore.dto.ProductInfoDTO;
-import project.store.onlinestore.dto.ProductToStartPageDTO;
+import project.store.onlinestore.dto.ProductStartPageDTO;
 
 
 import javax.persistence.*;
@@ -22,7 +22,7 @@ public class Product {
     private String shortDescription;
     private String description;
     @Lob
-    private HashMap<Integer,byte[]> productImage;
+    private HashMap<Integer, byte[]> productImage;
 
     public Product(String name, double price, String color, String shortDescription, String description, HashMap<Integer, byte[]> productImage) {
         this.name = name;
@@ -32,10 +32,12 @@ public class Product {
         this.description = description;
         this.productImage = productImage;
     }
-    public ProductToStartPageDTO toStartPageDTO(){
-        return ProductToStartPageDTO.of(id,name,price,shortDescription,productImage.get(1));
+
+    public ProductStartPageDTO toStartPageDTO() {
+        return ProductStartPageDTO.of(id, name, price, shortDescription, productImage.get(1));
     }
-    public ProductInfoDTO toProductInfoDTO(){
-        return ProductInfoDTO.of(id,name,price,color,shortDescription,description, productImage);
+
+    public ProductInfoDTO toProductInfoDTO() {
+        return ProductInfoDTO.of(id, name, price, color, shortDescription, description, productImage);
     }
 }

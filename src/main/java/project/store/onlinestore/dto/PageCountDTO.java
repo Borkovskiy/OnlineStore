@@ -13,7 +13,8 @@ public class PageCountDTO {
         this.count = count;
         this.pageSize = pageSize;
     }
-    public static PageCountDTO of(long count,int pageSize){
-        return new PageCountDTO(count,pageSize);
+
+    public static PageCountDTO of(long count, int pageSize) {
+        return new PageCountDTO(count, pageSize);
     }
 }

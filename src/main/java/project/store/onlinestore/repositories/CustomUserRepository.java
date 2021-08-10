@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import project.store.onlinestore.model.CustomUser;
 
 
-public interface CustomUserRepository extends JpaRepository<CustomUser,Long> {
+public interface CustomUserRepository extends JpaRepository<CustomUser, Long> {
 }

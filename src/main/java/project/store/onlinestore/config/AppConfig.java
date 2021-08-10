@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-private final TestHelper testHelper;
+    private final TestHelper testHelper;
 
     public AppConfig(TestHelper testHelper) {
         this.testHelper = testHelper;
@@ -22,7 +22,7 @@ private final TestHelper testHelper;
             }
         };
     }
-    }
+}
 
 
 

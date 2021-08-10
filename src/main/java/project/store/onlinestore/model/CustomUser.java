@@ -1,17 +1,12 @@
 package project.store.onlinestore.model;
 
 
-
-
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import project.store.onlinestore.enums.Gender;
 import project.store.onlinestore.enums.UserRole;
 
-
 import javax.persistence.*;
-
 
 
 @Entity
@@ -32,7 +27,6 @@ public class CustomUser {
     private String phoneNumber;
     private String username;
     private String password;
-
 
 
 }

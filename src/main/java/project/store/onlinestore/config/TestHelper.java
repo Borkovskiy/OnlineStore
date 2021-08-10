@@ -12,8 +12,9 @@ public class TestHelper {
     public TestHelper(ProductService productService) {
         this.productService = productService;
     }
-    public void init(){
-        TestStart testStart=new TestStart(productService);
+
+    public void init() {
+        TestStart testStart = new TestStart(productService);
         testStart.saveToBase();
 
     }
