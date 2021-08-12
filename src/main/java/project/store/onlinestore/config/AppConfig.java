@@ -3,21 +3,29 @@ package project.store.onlinestore.config;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import project.store.onlinestore.enums.UserRole;
+import project.store.onlinestore.services.UserService;
 
 @Configuration
 public class AppConfig {
 
-    private final TestHelper testHelper;
-
-    public AppConfig(TestHelper testHelper) {
-        this.testHelper = testHelper;
-    }
 
     @Bean
-    public CommandLineRunner commandLineRunner() {
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+    @Bean
+    public CommandLineRunner commandLineRunner(final UserService userService,
+                                               final PasswordEncoder encoder, final TestHelper testHelper) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
+                userService.addUser("admin",
+                        encoder.encode(("admin")),
+                        UserRole.ADMIN);
+
                 testHelper.init();
             }
         };
