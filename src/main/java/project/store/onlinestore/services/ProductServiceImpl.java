@@ -36,10 +36,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public List<ProductStartPageDTO> getAllProduct(Pageable pageable) {
-        List<ProductStartPageDTO> result = new ArrayList<>();
+    public List<ProductInfoDTO> getAllProduct(Pageable pageable) {
+        List<ProductInfoDTO> result = new ArrayList<>();
         Page<Product> products = productRepository.findAll(pageable);
-        products.forEach((p) -> result.add(p.toStartPageDTO()));
+        products.forEach((p) -> result.add(p.toProductInfoDTO()));
         return result;
     }
 

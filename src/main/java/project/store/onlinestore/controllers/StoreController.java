@@ -26,7 +26,7 @@ public class StoreController {
 
 
     @GetMapping("products")
-    public List<ProductStartPageDTO> getProducts(@RequestParam(required = false, defaultValue = "0")
+    public List<ProductInfoDTO> getProducts(@RequestParam(required = false, defaultValue = "0")
                                                         Integer page) {
 
         return productServices.getAllProduct(PageRequest.of(page, PAGE_SIZE, Sort.Direction.ASC,

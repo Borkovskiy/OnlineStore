@@ -13,7 +13,7 @@ public interface ProductService {
     void addProduct(Product product);
     void addSlider(Slider slider);
 
-    List<ProductStartPageDTO> getAllProduct(Pageable pageable);
+    List<ProductInfoDTO> getAllProduct(Pageable pageable);
 
     ProductInfoDTO getProduct(long id);
 
