@@ -1,5 +1,6 @@
 package project.store.onlinestore.controllers;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
@@ -7,19 +8,20 @@ import project.store.onlinestore.dto.PageCountDTO;
 import project.store.onlinestore.dto.ProductInfoDTO;
 import project.store.onlinestore.dto.ProductToStartPageDTO;
 import project.store.onlinestore.services.ProductService;
-
+import project.store.onlinestore.services.ProductServiceImpl;
 
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/store")
-@CrossOrigin
+
 public class StoreController {
     private static final int PAGE_SIZE = 6;
 
-    private final ProductService productServices;
-    public StoreController(ProductService productServices) {
+    private final project.store.onlinestore.services.ProductService productService;
+
+    public StoreController(@Qualifier("ProductServiceImpl") ProductService productServices) {
         this.productServices = productServices;
     }
 
