@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import project.store.onlinestore.dto.ProductInfoDTO;
+import project.store.onlinestore.dto.result.BadRequestResult;
 import project.store.onlinestore.dto.result.ResultDTO;
 import project.store.onlinestore.dto.result.SuccessResult;
 import project.store.onlinestore.enums.UserRole;
@@ -30,7 +31,12 @@ public class AuthController {
 
     @PostMapping("/singup")
     public ResponseEntity<ResultDTO> addNewUser(@RequestBody CustomUser user){
-        userService.addUser(user.getEmail(), passwordEncoder.encode(user.getPassword()), UserRole.ADMIN);
+        System.out.println(user);
+       if(! userService.addUser(user.getEmail(), passwordEncoder.encode(user.getPassword()), UserRole.ADMIN)){
+           return  new ResponseEntity<>(new BadRequestResult(), HttpStatus.BAD_REQUEST);
+       }
+
         return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
     }
+
 }

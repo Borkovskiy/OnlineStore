@@ -17,9 +17,10 @@ public class UserServiceImpl implements UserService{
 
     @Transactional
     public boolean addUser(String email, String passHash, UserRole role) {
-        if (customUserRepository.existsByEmail(email) )
+        if (customUserRepository.existsByEmail(email) ) {
+            System.out.println("est");
             return false;
-
+        }
         CustomUser user = new CustomUser(email, passHash, role);
         customUserRepository.save(user);
 
