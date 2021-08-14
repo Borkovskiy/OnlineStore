@@ -22,7 +22,7 @@ public class AppConfig {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-                userService.addUser("admin",
+                userService.addUser("admin@admin",
                         encoder.encode(("admin")),
                         UserRole.ADMIN);
 
