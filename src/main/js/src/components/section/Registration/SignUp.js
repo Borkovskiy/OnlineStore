@@ -9,13 +9,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import {Link} from 'react-router-dom'
 
 const SignUp = () => {
-    const paperStyle = { padding: '30px 20px', width: '500px', margin: '20px auto' }
+    const paperStyle = { margin: '0 auto' }
     const headerStyle = { margin: '0' }
     const avatarStyle = { backgroundColor: 'lightseagreen' }
     const marginTop = { marginTop: '5px' }
     return (
         <Grid>
-            <Typography elevation={20} style={paperStyle}>
+            <Typography elevation={20} className='paperStyle' style={paperStyle}>
                 <Grid align='center'>
                     <Avatar style={avatarStyle}>
                         <AddCircleOutlineIcon />
@@ -29,12 +29,12 @@ const SignUp = () => {
                     <FormControl component="fieldset" style={marginTop}>
                         <FormLabel component="legend">Gender</FormLabel>
                         <RadioGroup aria-label="gender" name="gender" style={{ display: 'initial' }}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            <FormControlLabel value="female" control={<Radio />} label="FEMALE" />
+                            <FormControlLabel value="male" control={<Radio />} label="MALE" />
                         </RadioGroup>
                     </FormControl>
                     <TextField fullWidth label='Phone Number' />
-                    <TextField fullWidth type='password' label='Passord' />
+                    <TextField fullWidth type='password' label='Password' />
                     <TextField fullWidth type='password' label='Confirm Passord' />
                     <FormControlLabel
                         control={<Checkbox name="checkedA" />}

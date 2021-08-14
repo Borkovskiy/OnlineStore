@@ -60,3 +60,15 @@
     color: white;
     transition-duration: .2s;
 }
+
+.addressForm {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+@media (max-width: 500px) {
+    .addressForm {
+        width: 100%;
+    }
+}

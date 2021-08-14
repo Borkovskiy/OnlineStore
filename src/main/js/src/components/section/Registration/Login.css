@@ -1,0 +1,11 @@
+.paperStyle {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+@media (max-width: 500px) {
+    .paperStyle {
+        width: 100%;
+    }
+}

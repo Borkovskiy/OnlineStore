@@ -6,18 +6,23 @@ function Fetching() {
     useEffect(() => {
         axios.get('https://online-store-120.herokuapp.com/store/products').then(res => {
             console.log(res)
+            setProducts(res.data)
         })
-        .catch(err => {
-            console.log(err)
-        })
-    })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
     return (
         <div>
-            <ul>
-                {products.map(product => (
-                    <li key={product.id}>{product.name}</li>
-                ))}
-            </ul>
+            {
+                products.map(product => (
+                    <div key={product.id}>
+                        <img src={`data:image/jpeg;base64,${product.base64Image}`} width={"400px"} />
+                        <div>{product.name}</div>
+                    </div>
+                ))
+            }
+
         </div>
     )
 }

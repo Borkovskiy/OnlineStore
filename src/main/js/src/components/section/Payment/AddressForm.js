@@ -5,6 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { Country, City } from 'country-state-city';
 import {Link} from 'react-router-dom'
 import FormInput from './FormInput';
+import './Payment.css'
 
 const AddressForm = ({next}) => {
     const methods = useForm();
