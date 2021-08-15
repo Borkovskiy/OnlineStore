@@ -4,7 +4,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {Link} from 'react-router-dom'
 import { Google } from './Google'
 import './Login.css'
-import {useForm} from 'react-hook-form'
+import {useState} from 'react'
 
 
 const Login = () => {
@@ -13,33 +13,31 @@ const Login = () => {
     const btnstyle = {marginTop: '8px', marginBottom: '8px'}
     const linkButton = {marginTop: '8px'}
 
-    const { register, handleSubmit } = useForm();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("")
 
-    const onSubmit = data => {
-        console.log(data)
-        return fetch("http://localhost:8080/js_spring_security_check", {
-            mode: 'no-cors',
-            method: "POST",
-            body: data
-          }).then(function (res) {
-            if (res.ok) {
-              alert("You have successfully registered! ");
-            } else if (res.status == 401) {
-              alert("User with this email already exists.");
-            }
-          }, function (e) {
-            alert("Error submitting form!");
-          });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = { email, password };
+
+        fetch('js_spring_security_check', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log('new data added')
+        })
     }
+
     return (
         <Grid>
-            <form onSubmit={handleSubmit(onSubmit)} className='paperStyle' style={paperStyle}>
+            <form onSubmit={handleSubmit} className='paperStyle' style={paperStyle}>
                 <Grid align='center'>
                     <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
                     <h2>Login</h2>
                 </Grid>
-                <TextField type='email' label='Email' placeholder='Enter your email' {...register("email", { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/})} fullWidth required />
-                <TextField type='password' label='Password' placeholder='Enter your password' {...register("password", { required: true })} fullWidth required />
+                <TextField type='email' label='Email' onChange={(e) => setEmail(e.target.value)} placeholder='Enter your email' fullWidth required />
+                <TextField type='password' label='Password' onChange={(e) => setPassword(e.target.value)} placeholder='Enter your password' fullWidth required />
                 {/* <FormControlLabel
                     control={
                         <Checkbox
@@ -50,7 +48,7 @@ const Login = () => {
                     label="Primary"
                 /> */}
                 <Button type='submit' color='primary' variant='contained' style={btnstyle} fullWidth>Log in</Button>
-                <Google />
+                <a href="/oauth2/authorization/google">Sign in with Google</a>
                 <Typography>
                     <a href="#" style={linkButton}>
                         Forget password?
