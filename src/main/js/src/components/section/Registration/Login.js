@@ -25,7 +25,7 @@ const Login = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('new data added')
+            console.log('new data added: ', data)
         })
     }
 
