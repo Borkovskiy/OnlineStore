@@ -23,7 +23,7 @@ public class AppConfig {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-                CustomUser user= new CustomUser("admin@admin",("admin"),UserRole.ADMIN);
+                CustomUser user= new CustomUser("gordon12v@gmail.com",("admin"),UserRole.ADMIN);
                 userService.addUser(user);
 
 
