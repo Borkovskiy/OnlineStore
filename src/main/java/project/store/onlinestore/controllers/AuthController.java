@@ -51,15 +51,15 @@ public class AuthController {
             String email = (String) attrs.get("email");
             return email;
         }else {
-            String email = principal.getName();
 
 
-            return email;
+
+            return principal.getName();
         }
     }
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ResultDTO> handleException() {
-        return new ResponseEntity<>(new BadRequestResult(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new BadRequestResult("user not authorized"), HttpStatus.UNAUTHORIZED);
     }
 
 }
