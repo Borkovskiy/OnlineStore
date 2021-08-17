@@ -7,15 +7,15 @@ const Details = ({ match }) => {
     const { data } = useContext(DataContext)
     const { product, setProduct } = useState([])
 
-    // const getProduct = () => {
-    //     if(match.params.id) {
-    //         const res = data;
-    //         const date = res.filter(item => {
-    //             return item.id === match.params.id
-    //         })
-    //         console.log(date)
-    //     }
-    // }
+    const getProduct = () => {
+        if(match.params.id) {
+            const res = data;
+            const date = res.filter(item => {
+                return item.id === match.params.id
+            })
+            console.log(date)
+        }
+    }
     
 
 

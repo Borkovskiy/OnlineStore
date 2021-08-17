@@ -14,7 +14,7 @@ const ProductList = () => {
                 data.map(product => (
                     <div className="card" key={product.id}>
                         <Link to={`/product/${product.id}`}>
-                            <img src={`data:image/jpeg;base64,${product.productImage['1']}`} />
+                            <img src={`data:image/jpeg;base64,${product.productImage[1]}`} />
                         </Link>
                         <div className="content">
                             <h3>

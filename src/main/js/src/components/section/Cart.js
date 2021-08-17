@@ -30,12 +30,12 @@ const Cart = () => {
                                 <p>{item.description}</p>
 
                                 <div className="amount">
-                                    <button className="count" onClick={() => decrease(item._id)}> - </button>
+                                    <button className="count" onClick={() => decrease(item.id)}> - </button>
                                     <span>{item.count}</span>
-                                    <button className="count" onClick={() => increase(item._id)}> + </button>
+                                    <button className="count" onClick={() => increase(item.id)}> + </button>
                                 </div>
                             </div>
-                            <div className="delete" onClick={() => removeProduct(item._id)}>
+                            <div className="delete" onClick={() => removeProduct(item.id)}>
                                 <img src={Close} alt="" width="15" />
                             </div>
                         </div>
