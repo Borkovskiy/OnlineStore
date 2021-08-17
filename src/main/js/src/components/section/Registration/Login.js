@@ -20,7 +20,7 @@ const Login = () => {
         e.preventDefault();
         const data = { email, password };
 
-        fetch('js_spring_security_check', {
+        fetch('login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)

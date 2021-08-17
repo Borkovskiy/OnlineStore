@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface UserService {
 
    Optional<CustomUser> findByEmail(String login);
-   boolean addUser(String email, String password, UserRole role);
+   boolean addUser(CustomUser user);
 }

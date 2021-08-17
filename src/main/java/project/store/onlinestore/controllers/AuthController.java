@@ -22,17 +22,17 @@ public class AuthController {
 
 
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
 
-    public AuthController(UserService userService, PasswordEncoder passwordEncoder) {
+
+    public AuthController(UserService userService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
+
     }
 
-    @PostMapping("/singup")
+    @PostMapping("/signup")
     public ResponseEntity<ResultDTO> addNewUser(@RequestBody CustomUser user){
         System.out.println(user);
-       if(! userService.addUser(user.getEmail(), passwordEncoder.encode(user.getPassword()), UserRole.ADMIN)){
+       if(! userService.addUser(user)){
            return  new ResponseEntity<>(new BadRequestResult(), HttpStatus.BAD_REQUEST);
        }
 
