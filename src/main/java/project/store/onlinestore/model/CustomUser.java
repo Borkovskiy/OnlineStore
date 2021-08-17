@@ -23,7 +23,7 @@ public class CustomUser {
     private String password;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "customUser")
     private Address address;
-    private String firstName;
+    private String name;
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Gender gender;
