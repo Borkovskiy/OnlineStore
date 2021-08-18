@@ -6,6 +6,8 @@ export const DataContext = createContext()
 
 export const DataProvider = (props) => {
   const [products, setProducts] = useState([]);
+  // const [isLoading, setLoading] = useState(true);
+
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -27,6 +29,7 @@ export const DataProvider = (props) => {
       const data = products.filter(product => {
         return product.id === id
       })
+      console.log(typeof id)
       setCart([...cart, ...data])
     } else {
       alert("The product has been added to cart.")
@@ -80,29 +83,28 @@ export const DataProvider = (props) => {
           cart.splice(index, 1)
         }
       })
-      setCart([cart]);
+      setCart(cart);
       getTotal();
     }
   }
 
   useEffect(() => {
-    let url = 'https://online-store-120.herokuapp.com/store/products';
-    axios
-      .get(url)
-      .then(function (response) {
-        setProducts(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => console.log(error));
+    const getProducts = async () => {
+      const result = await axios.get(
+        "https://online-store-120.herokuapp.com/store/products"
+      );
+      setProducts(result.data);
+      // setLoading(false)
+    };
+    getProducts();
   }, []);
-  // console.log(products)
+
+
 
   return (
     <DataContext.Provider value={{ data: products, addToCart, cart, decrease, increase, total, getTotal, removeProduct }}>
       {props.children}
     </DataContext.Provider>
   );
-
-
 }
 

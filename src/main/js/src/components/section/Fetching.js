@@ -4,7 +4,7 @@ import axios from 'axios';
 function Fetching() {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        axios.get('https://online-store-120.herokuapp.com/store/products').then(res => {
+        axios.get('store/products').then(res => {
             console.log(res)
             setProducts(res.data)
         })

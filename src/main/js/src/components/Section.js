@@ -14,8 +14,8 @@ export class Section extends Component {
         return (
             <section>
                 <Route path="/" component={ProductList} exact />
-                <Route path="/product" component={ProductList} exact />
-                <Route path="/product/:id" component={Details} />
+                <Route path="/products" component={ProductList} exact />
+                <Route path="/products/:id" component={Details} />
                 <Route path="/cart" component={Cart} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/login" component={Login} />
