@@ -39,7 +39,7 @@ public class StoreController {
         return PageCountDTO.of(productServices.count(), PAGE_SIZE);
     }
 
-    @GetMapping("product/{id}")
+    @GetMapping("products/{id}")
     public ProductInfoDTO getProduct(
             @PathVariable(value = "id") long productId) {
         return productServices.getProduct(productId);
