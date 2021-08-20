@@ -31,9 +31,7 @@ export const DataProvider = (props) => {
       })
       console.log(typeof id)
       setCart([...cart, ...data])
-    } else {
-      alert("The product has been added to cart.")
-    }
+    } 
   };
 
   useEffect(() => {
