@@ -4,3 +4,10 @@
     height: 500px;
     object-position: top;
 }
+
+@media (max-width: 850px) {
+    .cover {
+        height: 30%;
+        min-height: 15rem
+    }
+}

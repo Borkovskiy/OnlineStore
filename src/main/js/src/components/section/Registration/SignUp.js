@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Grid, Typography, Avatar, TextField, Button, Checkbox } from '@material-ui/core'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Radio from '@material-ui/core/Radio';
@@ -6,7 +6,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { FormHelperText } from '@material-ui/core'
 import * as Yup from 'yup'
@@ -26,6 +26,7 @@ const SignUp = () => {
         termsAndConditions: false,
     }
     
+    const history = useHistory();
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().min(3, "It's too short").required("Required"),
@@ -51,10 +52,16 @@ const SignUp = () => {
             body: JSON.stringify(values)
         }).then(() => {
             console.log('new data added: ', values)
+            localStorage.setItem('new data added: ', JSON.stringify(values))
+            history.push({pathname: "/user", state: {values: values}})
         })
     }
 
-
+    useEffect(() => {
+        if (localStorage.getItem('user-info')) {
+            history.push("/user")
+        }
+    }, [])
 
     return (
         <Grid>

@@ -8,6 +8,7 @@ import Login from './section/Registration/Login'
 import SignUp from './section/Registration/SignUp'
 import About from './section/About'
 import Google from './section/Registration/Google'
+import UserProfile from './section/Registration/UserProfile'
 
 export class Section extends Component {
     render() {
@@ -22,6 +23,7 @@ export class Section extends Component {
                 <Route path="/signup" component={SignUp} />
                 <Route path="/about" component={About} />
                 <Route path="/oauth2/authorization/google" component={Google} />
+                <Route path="/user" component={UserProfile} />
             </section>
         )
     }

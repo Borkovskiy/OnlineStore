@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Typography, Avatar, TextField, Checkbox, FormControlLabel, Button } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Google } from './Google'
 import './Login.css'
-import {useState} from 'react'
 
 
 const Login = () => {
@@ -15,6 +14,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,8 +26,16 @@ const Login = () => {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('new data added: ', data)
+            localStorage.setItem('new data added: ', JSON.stringify(data))
+            history.push({ pathname: "/user", state: { data: data } })
         })
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            history.push("/user")
+        }
+    }, [])
 
     return (
         <Grid>
