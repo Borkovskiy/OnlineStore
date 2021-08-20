@@ -1,61 +1,14 @@
 #product {
-    display: grid;
-    grid-template-columns: repeat(2, calc(50% - 12px));
-    grid-template-rows: auto;
-    grid-row-gap: 32px;
-    grid-column-gap: 18px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-@media (min-width: 768px) {
-    #product {
-        grid-template-columns: repeat(4, calc(25% - 18px));
-    }
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .content p {
     word-break: break-word
 }
 
-@media (max-width: 850px) {
-    .card button {
-        display: none;
-    }
-}
-
-@media (min-width: 850px) {
-    .card button {
-        border: none;
-        outline: none;
-        background: #333;
-        color: white;
-        width: 100%;
-        height: 40px;
-        display: block;
-        cursor: pointer;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin: 15px 0;
-        border-radius: 5px;
-    }
-}
-
-@media (max-width: 850px) {
-    .card {
-        min-width: 300px;
-        min-height: 300px;
-        border: 1px solid #eee;
-        overflow: hidden;
-        padding: 10px;
-        box-shadow: 2px 8px 20px #ddd;
-        margin: 10px 0;
-        transition: 0.5 linear;
-    }
-}
-
-@media (min-width: 850px) {
 .card {
     min-width: 300px;
     min-height: 400px;
@@ -65,7 +18,6 @@
     box-shadow: 2px 8px 20px #ddd;
     margin: 10px;
     transition: 0.5 linear;
-}
 }
 
 .card:hover {
@@ -89,7 +41,6 @@
 .card h3 a {
     text-decoration: none;
     color: #333;
-    font-size: 1.3rem;
 }
 
 .card h3 a:hover {
@@ -99,8 +50,24 @@
 .card p {
     margin: 10px 0;
     max-width: 300px;
+
 }
 
 .card span {
     color: green;
+}
+
+.card button {
+    border: none;
+    outline: none;
+    background: #333;
+    color: white;
+    width: 100%;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    border-radius: 5px;
 }

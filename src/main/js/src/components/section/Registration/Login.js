@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Grid, Typography, Avatar, TextField, Checkbox, FormControlLabel, Button } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Link, useHistory } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { Google } from './Google'
 import './Login.css'
+import {useState} from 'react'
 
 
 const Login = () => {
-    const paperStyle = { margin: '0 auto' }
+    const paperStyle = {margin: '0 auto' }
     const avatarStyle = { backgroundColor: 'lightseagreen' }
-    const btnstyle = { marginTop: '8px', marginBottom: '8px' }
-    const linkButton = { marginTop: '8px' }
+    const btnstyle = {marginTop: '8px', marginBottom: '8px'}
+    const linkButton = {marginTop: '8px'}
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
-    const [data, setData] = useState()
-    const history = useHistory();
-
-    useEffect(() => {
-        if (localStorage.getItem('user')) {
-            history.push("/user")
-        }
-    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,13 +26,7 @@ const Login = () => {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('new data added: ', data)
-            localStorage.setItem('new data added: ', JSON.stringify(data))
-            history.push({ pathname: "/user", state: { data: data } })
-        }).catch(error => {
-            alert('Login Failed. Try again.')
         })
-        // setData(response.data)
-        // localStorage.setItem('')
     }
 
     return (

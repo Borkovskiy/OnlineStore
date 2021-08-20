@@ -88,8 +88,7 @@ nav .nav-cart span {
         background: #333;
         z-index: 999;
         opacity: 0.99;
-        transition: 0.3s linear;
-        padding-bottom: 30px;
+        transition: 0.4s linear;
     }
 
     .header .menu,

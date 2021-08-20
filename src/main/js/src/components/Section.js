@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import ProductList from './section/ProductList'
 import Details from './section/Details'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Cart from './section/Cart'
 import Payment from './section/Payment/Payment'
 import Login from './section/Registration/Login'
 import SignUp from './section/Registration/SignUp'
 import About from './section/About'
 import Google from './section/Registration/Google'
-import UserProfile from './section/Registration/UserProfile'
-import Logout from './section/Registration/Logout'
 
 export class Section extends Component {
     render() {
@@ -21,11 +19,9 @@ export class Section extends Component {
                 <Route path="/cart" component={Cart} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/login" component={Login} />
-                <Route path="/logout" component={Logout} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/about" component={About} />
                 <Route path="/oauth2/authorization/google" component={Google} />
-                <Route path="/user" component={UserProfile} />
             </section>
         )
     }
