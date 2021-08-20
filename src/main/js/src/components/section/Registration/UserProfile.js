@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 
 function UserProfile({ history }) {
 
-    let user = JSON.stringify(history.location.state.data.name)
+    let user = JSON.stringify(history.location.state.data.email)
 
     user = user.replace(/['"]+/g, '');
     console.log(user);

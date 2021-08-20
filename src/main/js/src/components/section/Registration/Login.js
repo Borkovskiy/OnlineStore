@@ -35,8 +35,6 @@ const Login = () => {
             console.log('new data added: ', data)
             localStorage.setItem('new data added: ', JSON.stringify(data))
             history.push({ pathname: "/user", state: { data: data } })
-        }).catch(error => {
-            alert('Login Failed. Try again.')
         })
         // setData(response.data)
         // localStorage.setItem('')
