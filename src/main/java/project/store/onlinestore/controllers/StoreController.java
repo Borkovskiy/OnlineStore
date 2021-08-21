@@ -29,7 +29,14 @@ public class StoreController {
     @GetMapping("products")
     public List<ProductInfoDTO> getProducts(@RequestParam(required = false, defaultValue = "1")
                                                         Integer page) {
+        if(page == null){
+            page = 0;
+        }
 
+        if(page >= 1){
+            // Front-end problem forces us to mad solutions
+            page--;
+        }
         return productServices.getAllProduct(PageRequest.of(page, PAGE_SIZE, Sort.Direction.ASC,
                 "id"));
     }
