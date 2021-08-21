@@ -11,14 +11,12 @@ import java.nio.file.Files;
 import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
-
+//Class for initialising DB with DEMO products and sliders
 public class TestStart {
     private final ProductService productService;
     private final static HashMap <Integer,Product> description= new HashMap<>();{
         Product product1= new Product("DOLCE & GABBANA", 645.00, "Yellow", "Printed cotton-blend poplin bralette","Dolce & Gabbana's printed cotton-blend poplin bralette depicts ceremonial standards held by jousting knights. It's cut for a close fit with boning down each side and traced with picot trims. Style yours with a white skirt to make the colors really pop.");
-        description.put(1,product1);
         Product product2= new Product("ZIMMERMANN", 1225.00, "Ivory", "Aliane cutout tie-front broderie anglaise cotton midi dress","Zimmermann's 'Aliane' dress is perfect for a bohemian bride. It's made from airy broderie anglaise cotton and has voluminous blouson sleeves and cutout sides that show off a flash of skin. It's fully lined through the bust and skirt to keep you covered where you need it most.");
-        description.put(2,product2);
         Product product3= new Product("DOLCE & GABBANA",995.00,"Red","Tiered printed cotton-poplin maxi skirt","Dolce & Gabbana has answered this season's call for joyful dressing with a bold printed skirt. Made in Italy from cotton-poplin, it sits on the waist and gradually builds in volume with tiers to enhance the shape. The maxi-length hem invites you to add a dainty anklet.");
         Product product4= new Product("JACQUEMUS",225.00,"Beige","Alzou cropped mohair-blend cardigan","Jacquemus' 'Alzou' cardigan has a daring shrunken fit - it's one of the French designer's go-to silhouettes. With plenty of mohair in the blend, you can imagine how wonderfully soft and fluffy it feels.");
         Product product5= new Product("ROKSANDA",1350.00,"YELLOW","Naomina pleated cotton-poplin midi dress","What better way to inject a touch of joyful color into your wardrobe than with Roksanda's vibrant yellow 'Naomina' dress? It's cut from crisp cotton-poplin that's artfully pleated throughout and threaded with a contrasting belt to cinch the shape.");
@@ -26,6 +24,8 @@ public class TestStart {
         Product product7= new Product("SEA",465.00,"RED","Ziggy striped crochet-knit sweater","Sea's colorful 'Ziggy' sweater is modeled on one that was hand-crocheted by co-founder Monica Paolini's nanny - she personally taught the brand's team how to recreate it. It's spun with generous amounts of wool and cotton in a joyful rainbow palette. Wear yours with denim.");
         Product product8= new Product("BALMAIN",2190.00,"White","Double-breasted frayed tweed blazer","Our buyers highlight boyish blazers as a key investment for the season - you can wear them now and for years to come, too. Topping the wish list, Balmain's frayed version is tailored from soft white tweed and punctuated by signature gold buttons, which you could match your jewelry to.");
         Product product9= new Product("GUCCI",890.00,"White","Button-embellished checked tweed mini skirt","Recalling styles from the '60s, Gucci's retro mini skirt is made from tactile tweed in a structured silhouette. It's woven with navy and red checks and embellished with decorative medallion buttons at the waist. It'll look so chic styled with the matching jacket.");
+        description.put(1,product1);
+        description.put(2,product2);
         description.put(3,product3);
         description.put(4,product4);
         description.put(5,product5);

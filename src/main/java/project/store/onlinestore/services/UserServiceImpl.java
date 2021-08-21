@@ -1,5 +1,6 @@
 package project.store.onlinestore.services;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,9 @@ public class UserServiceImpl implements UserService{
     }
     @Transactional(readOnly = true)
     @Override
-    public Optional<CustomUser> findByEmail(String login) {
-        return customUserRepository.findByEmail(login);
+    public CustomUser findByEmail(String login) {
+        return customUserRepository.findByEmail(login).orElseThrow(()->
+                new UsernameNotFoundException("User doesnt exist"));
     }
+
 }
