@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.store.onlinestore.enums.UserRole;
+import project.store.onlinestore.exception.UserNotFoundException;
 import project.store.onlinestore.model.CustomUser;
 import project.store.onlinestore.repositories.CustomUserRepository;
 
@@ -30,11 +31,37 @@ public class UserServiceImpl implements UserService{
         System.out.println(customUserRepository.findByEmail(user.getEmail()));
         return true;
     }
+    // todo: change exception
     @Transactional(readOnly = true)
     @Override
-    public CustomUser findByEmail(String login) {
+    public CustomUser findByEmail(String login) throws UserNotFoundException {
         return customUserRepository.findByEmail(login).orElseThrow(()->
-                new UsernameNotFoundException("User doesnt exist"));
+                new UserNotFoundException("User doesnt exist"));
     }
+    @Transactional
+    public void updateResetPasswordToken(String token, String email) throws  UserNotFoundException {
+        CustomUser customUser= customUserRepository.findByEmail(email).orElseThrow(()->
+                new UserNotFoundException("User doesnt exist"));
+
+            customUser.setResetPasswordToken(token);
+            customUserRepository.save(customUser);
+
+
+    }
+    @Transactional(readOnly = true)
+    public CustomUser getByResetPasswordToken(String token) throws UserNotFoundException {
+        return customUserRepository.findByResetPasswordToken(token).orElseThrow(()->
+                new UserNotFoundException("User doesnt exist"));
+    }
+    @Transactional
+    public void updatePassword(CustomUser customUser, String newPassword) {
+
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        customUser.setPassword(encodedPassword);
+
+        customUser.setResetPasswordToken(null);
+        customUserRepository.save(customUser);
+    }
+
 
 }

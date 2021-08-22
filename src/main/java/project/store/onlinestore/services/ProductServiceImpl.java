@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductInfoDTO> getAllProduct(Pageable pageable) {
         List<ProductInfoDTO> result = new ArrayList<>();
-        Page<Product> products = productRepository.findAll(pageable);
+        List<Product> products = productRepository.retriveAll(pageable);
         products.forEach((p) -> result.add(p.toProductInfoDTO()));
         return result;
     }

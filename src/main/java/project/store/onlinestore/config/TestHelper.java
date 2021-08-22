@@ -2,7 +2,7 @@ package project.store.onlinestore.config;
 
 import org.springframework.stereotype.Component;
 import project.store.onlinestore.services.ProductService;
-import project.store.onlinestore.services.TestStart;
+import project.store.onlinestore.services.FillingDB;
 
 
 @Component
@@ -14,8 +14,8 @@ public class TestHelper {
     }
 
     public void init() {
-        TestStart testStart = new TestStart(productService);
-        testStart.saveToBase();
+        FillingDB fillingDB = new FillingDB(productService);
+        fillingDB.saveToBase();
 
     }
 }
