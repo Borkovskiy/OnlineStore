@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react'
-import { Grid, Typography, Avatar, TextField, Button, Checkbox } from '@material-ui/core'
+import React, { useEffect } from 'react'
+import { Grid, Typography, Avatar, TextField, Checkbox } from '@material-ui/core'
+import { Button } from 'react-bootstrap'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Link, useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { FormHelperText } from '@material-ui/core'
 import * as Yup from 'yup'
@@ -25,12 +26,12 @@ const SignUp = () => {
         confirmPassword: '',
         termsAndConditions: false,
     }
-    
+
     const history = useHistory();
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().min(3, "It's too short").required("Required"),
-        email: Yup.string().email("Enter valid email").required("Required"), 
+        email: Yup.string().email("Enter valid email").required("Required"),
         gender: Yup.string().oneOf(["MALE", "FEMALE"], "Required").required("Required"),
         phoneNumber: Yup.number().typeError("Enter valid phone number").required("Required"),
         password: Yup.string().min(8, "Password minimum length should be 8").required("Required"),
@@ -53,7 +54,7 @@ const SignUp = () => {
         }).then(() => {
             console.log('new data added: ', values)
             localStorage.setItem('new data added: ', JSON.stringify(values))
-            history.push({pathname: "/user", state: {values: values}})
+            history.push({ pathname: "/user", state: { values: values } })
         })
     }
 
@@ -76,10 +77,10 @@ const SignUp = () => {
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
                         <Form>
-                            <Field as={TextField} type="text" name="name" label='Name' 
-                            placeholder='Enter your name' fullWidth helperText={<ErrorMessage name="name" />} />
+                            <Field as={TextField} type="text" name="name" label='Name'
+                                placeholder='Enter your name' fullWidth helperText={<ErrorMessage name="name" />} />
                             <Field as={TextField} type="email" name="email" fullWidth label='Email'
-                            helperText={<ErrorMessage name="email" />} />
+                                helperText={<ErrorMessage name="email" />} />
                             <FormControl component="fieldset" style={marginTop}>
                                 <FormLabel component="legend">Gender</FormLabel>
                                 <Field as={RadioGroup} aria-label="gender" name="gender" style={{ display: 'initial' }}>
@@ -89,19 +90,19 @@ const SignUp = () => {
                             </FormControl>
                             <FormHelperText><ErrorMessage name="gender" /></FormHelperText>
                             <Field as={TextField} fullWidth name="phoneNumber" label='Phone Number'
-                            helperText={<ErrorMessage name="phoneNumber" />} />
-                            <Field as={TextField} fullWidth name="password" type='password' label='Password' 
-                            helperText={<ErrorMessage name="password" />}/>
+                                helperText={<ErrorMessage name="phoneNumber" />} />
+                            <Field as={TextField} fullWidth name="password" type='password' label='Password'
+                                helperText={<ErrorMessage name="password" />} />
                             <Field as={TextField} fullWidth name="confirmPassword" type='password' label='Confirm Passord'
-                            helperText={<ErrorMessage name="confirmPassword" />} />
+                                helperText={<ErrorMessage name="confirmPassword" />} />
                             <FormControlLabel
                                 control={<Field as={Checkbox} name="termsAndConditions" />}
                                 label="I accept the terms and conditions."
                             />
                             <FormHelperText><ErrorMessage name="termsAndConditions" /></FormHelperText>
-                            <Button type='submit' variant='contained' disabled={props.isSubmitting} color='primary' fullWidth>{props.isSubmitting ? "Loading" : "Sign Up"}</Button>
+                            <Button type='submit' variant='dark' disabled={props.isSubmitting} className="btn-block">{props.isSubmitting ? "Loading" : "Sign Up"}</Button>
                             <Typography style={{ marginTop: '10px' }}>Already have an account?&nbsp;
-                            <Button component={Link} to="/login">Log in</Button>
+                            <NavLink to="/login">Log in</NavLink>
                             </Typography>
                         </Form>
                     )}

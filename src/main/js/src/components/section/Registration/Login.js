@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Typography, Avatar, TextField, Checkbox, FormControlLabel, Button } from '@material-ui/core'
+import { Grid, Typography, Avatar, TextField, Checkbox, FormControlLabel } from '@material-ui/core'
+import {Button} from 'react-bootstrap'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { Google } from './Google'
 import './Login.css'
 
@@ -25,14 +26,14 @@ const Login = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('new data added: ', data)
-            localStorage.setItem('new data added: ', JSON.stringify(data))
+            console.log('user-info: ', data)
+            localStorage.setItem('user-info: ', JSON.stringify(data))
             history.push({ pathname: "/user", state: { data: data } })
         })
     }
 
     useEffect(() => {
-        if (localStorage.getItem('user')) {
+        if (localStorage.getItem('user-info')) {
             history.push("/user")
         }
     }, [])
@@ -55,7 +56,7 @@ const Login = () => {
                     }
                     label="Primary"
                 /> */}
-                <Button type='submit' color='primary' variant='contained' style={btnstyle} fullWidth>Log in</Button>
+                <Button type='submit' variant='dark' style={btnstyle} className="btn-block">Log in</Button>
                 <a href="/oauth2/authorization/google">Sign in with Google</a>
                 <Typography>
                     <a href="#" style={linkButton}>
@@ -63,7 +64,7 @@ const Login = () => {
                     </a>
                 </Typography>
                 <Typography> Do you have an account?&nbsp;
-                    <Button component={Link} to="/signup">Sign up?</Button>
+                    <NavLink to="/signup">Sign up?</NavLink>
                 </Typography>
             </form>
         </Grid>

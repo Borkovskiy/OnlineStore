@@ -1,0 +1,55 @@
+header {
+    width: 100%;
+    height: 200px;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/40238/25b15e689033556a005a423094dfce29/hero-desktop-data.jpg/w1800_q80.jpg);
+}
+
+
+
+header > p {
+    display: block;
+    font-size: 3rem;
+    position: absolute;
+    font-weight: 500;
+    font-family: Chronicle Display, Times New Roman, serif;
+    color: white;
+    left: 50px;
+    top: 70px;
+    padding: 0 10px;
+    line-height: 1.25;
+}
+
+@media (max-width: 700px) {
+    header > p {
+        left: 20px;
+        top: 95px;
+        font-size: 2rem;
+        line-height: 1;
+    }
+    
+    header {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/40242/e44458f7e89f013bcb476fa40cafd2aa/hero-mobile-data.jpg/w700_q80.jpg);
+        width: 100%;
+        height: 200px;
+        background-size: cover; 
+        background-repeat: no-repeat;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+main {
+    float: left;
+    position: static;
+    height: 10000px;
+}
+
+main > div > p {
+    color: black;
+}

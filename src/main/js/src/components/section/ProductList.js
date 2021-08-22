@@ -1,45 +1,45 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { DataContext } from '../DataProvider'
 import '../css/Products.css'
-import Carousel from 'react-bootstrap/Carousel'
-import '../css/Carousel.css'
+import { CarouselList } from './CarouselList'
+import { PaginationButtons } from './Pagination'
+import { ModalCart } from './Modals/ModalCart'
 
 const ProductList = () => {
-    const { data, addToCart } = useContext(DataContext)
+    const { data, addToCart, handlePageChange, currentPage } = useContext(DataContext)
+    const [scroll, setScroll] = React.useState(0);
+
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
+
+    const handleUpButton = () => {
+        window.scrollTo(0, 0);
+    };
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <>
-            <Carousel style={{ zIndex: "3" }}>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 cover"
-                        src="https://www.chanel.com/images/q_auto,f_auto,fl_lossy,dpr_auto/w_1280/FSH-1625648916735-034i01.jpg"
-                        alt="First slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 cover"
-                        src="https://media.gucci.com/content/PromoComponent_Standard_1264x790/1620034209/PromoComponent_OUVERTURE-21-017_001_Default.jpg"
-                        alt="Second slide"
-                    />
+            <div className="onTop">
+            <button
+                className={scroll < 300 ? "" : "show"}
+                onClick={handleUpButton}>
+                Go Up
+            </button>
+            </div>
 
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 cover"
-                        src="https://media.gucci.com/content/PromoComponent_Standard_1264x790/1620041404/PromoComponent_OUVERTURE-21-071_001_Default.jpg"
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-            </Carousel>
+            <CarouselList />
             <div id="product">
                 {
                     data.map(product => (
                         <div className="card" key={product.id}>
                             <Link to={`/products/${product.id}`}>
-                                <img src={`data:image/jpeg;base64,${product.productImage[1]}`} />
+                                <img src={`data:image/jpeg;base64,${product.productImage[0]}`} />
                             </Link>
                             <div className="content">
                                 <h3>
@@ -53,6 +53,10 @@ const ProductList = () => {
                     ))
                 }
             </div>
+            <PaginationButtons
+                handlePageChange={handlePageChange}
+                page={currentPage}
+            />
         </>
     );
 };

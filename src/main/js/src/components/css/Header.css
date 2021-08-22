@@ -6,7 +6,7 @@
     margin: 0 auto;
     width: 100%;
     background: rgba(0, 0, 0, 0.952);
-    opacity: 0.9; /* Полупрозрачный фон */
+    opacity: 0.9; 
     position: sticky;
     z-index: 10;
     top: 0;

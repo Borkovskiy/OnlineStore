@@ -6,10 +6,25 @@ export const DataContext = createContext()
 
 export const DataProvider = (props) => {
   const [products, setProducts] = useState([]);
-  // const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const spinner = {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    margin: 'auto',
+    width: '100%',
+    maxWidth: '300px',
+    zIndex: '100'
+  }
+
 
   // useEffect(() => {
   //   const localData = localStorage.getItem('cart');
@@ -89,20 +104,51 @@ export const DataProvider = (props) => {
   }
 
   useEffect(() => {
-    const getProducts = async () => {
-      const result = await axios.get(
-        "https://online-store-120.herokuapp.com/store/products"
+    getProducts(currentPage);
+  }, [currentPage]);
+
+  const getProducts = async (pageNumber) => {
+    try {
+      const res = await axios.get(
+        `https://online-store-120.herokuapp.com/store/products?page=${pageNumber}`
       );
-      setProducts(result.data);
-      // setLoading(false)
-    };
-    getProducts();
-  }, []);
+      console.log(res);
+      setProducts(res.data);
+      setLoading(false)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (isLoading) {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" style={spinner} />
+  }
+
+const handlePageChange = (e) => {
+  setCurrentPage(e.target.innerText);
+  console.log("page number:", e.target);
+};
+
+
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     const result = await axios.get(
+  //       "https://online-store-120.herokuapp.com/store/products"
+  //     );
+  //     setProducts(result.data);
+  //     setLoading(false)
+  //   };
+  //   getProducts();
+  // }, []);
+
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
 
 
   return (
-    <DataContext.Provider value={{ data: products, addToCart, cart, decrease, increase, total, getTotal, removeProduct }}>
+    <DataContext.Provider value={{ data: products, spinner, handlePageChange, currentPage, addToCart, cart, decrease, increase, total, getTotal, removeProduct }}>
       {props.children}
     </DataContext.Provider>
   );

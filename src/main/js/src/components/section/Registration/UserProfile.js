@@ -1,6 +1,6 @@
 import React from 'react'
 import './userStyle.css'
-import { Button } from 'react-bootstrap'
+import { Logout } from './Logout'
 
 function UserProfile({ history }) {
 
@@ -10,7 +10,7 @@ function UserProfile({ history }) {
     console.log(user);
 
     return (
-        <div class="userStyle">
+        <div className="userStyle">
             <div>
                 <h3>Account</h3>
             </div>
@@ -19,7 +19,7 @@ function UserProfile({ history }) {
                 <p>we are glad to see you in our store! <br />
                 Let's do some shopping!</p>
             </div>
-            <Button variant="dark">Logout</Button>
+            <Logout />
         </div>
     )
 }
