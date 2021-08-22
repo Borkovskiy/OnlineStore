@@ -23,8 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        CustomUser customUser= userService.findByEmail(email).orElseThrow(()->
-                new UsernameNotFoundException("User doesnt exist"));
+        CustomUser customUser= userService.findByEmail(email);
         List<GrantedAuthority> roles= Arrays.asList(new SimpleGrantedAuthority(customUser.getRole().toString()));
 
         return new User(customUser.getEmail(), customUser.getPassword(), roles);

@@ -20,9 +20,20 @@ public class Product {
     private double price;
     private String color;
     private String shortDescription;
+    @Column(length = 1000)
     private String description;
     @Lob
     private HashMap<Integer, byte[]> productImage;
+
+
+
+    public Product( String name, double price, String color, String shortDescription, String description) {
+        this.name = name;
+        this.price = price;
+        this.color = color;
+        this.shortDescription = shortDescription;
+        this.description = description;
+    }
 
     public Product(String name, double price, String color, String shortDescription, String description, HashMap<Integer, byte[]> productImage) {
         this.name = name;

@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface UserService {
 
-   Optional<CustomUser> findByEmail(String login);
+   CustomUser findByEmail(String login);
    boolean addUser(CustomUser user);
 }

@@ -31,6 +31,7 @@ public class CustomUser {
     private UserRole role;
     @Enumerated(EnumType.STRING)
     private Provider provider;
+    private String resetPasswordToken;
 
     public CustomUser(String email, String password, UserRole role) {
         this.email = email;
