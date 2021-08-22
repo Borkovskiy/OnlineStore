@@ -24,7 +24,9 @@ public class AppConfig {
             @Override
             public void run(String... args) throws Exception {
                 CustomUser user= new CustomUser("admin@admin",("admin"),UserRole.ADMIN);
+                CustomUser user1= new CustomUser("gordon12v@gmail.com",("admin"),UserRole.ADMIN);
                 userService.addUser(user);
+                userService.addUser(user1);
 
 
                 testHelper.init();

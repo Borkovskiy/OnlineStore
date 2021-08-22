@@ -37,7 +37,7 @@ public class AuthController {
     public ResponseEntity<ResultDTO> addNewUser(@RequestBody CustomUser user){
         System.out.println(user);
        if(! userService.addUser(user)){
-           return  new ResponseEntity<>(new BadRequestResult(), HttpStatus.BAD_REQUEST);
+           return  new ResponseEntity<>(new BadRequestResult("user already exist"), HttpStatus.BAD_REQUEST);
        }
 
         return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
