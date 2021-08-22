@@ -27,13 +27,22 @@ export const DataProvider = (props) => {
 
 
   // useEffect(() => {
-  //   const localData = localStorage.getItem('cart');
-  //   setCart(localData && localData.length > 0 ? JSON.parse(localData) : []);
+  //   const dataCart = localStorage.getItem('cart');
+  //   setCart(dataCart && dataCart.length > 0 ? JSON.parse(dataCart) : []);
   // }, [])
 
   // useEffect(() => {
   //   localStorage.setItem('cart', JSON.stringify(cart))
   // }, [cart])
+
+  // useEffect(() => {
+  //   const dataTotal = localStorage.getItem('total');
+  //   setCart(dataTotal && dataTotal.length > 0 ? JSON.parse(dataTotal) : []);
+  // }, [])
+
+  // useEffect(() => {
+  //   localStorage.setItem('total', JSON.stringify(total))
+  // }, [total])
 
   const addToCart = (id) => {
     console.log(cart)

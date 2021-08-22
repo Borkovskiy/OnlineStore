@@ -8,7 +8,7 @@ import { ModalCart } from './Modals/ModalCart'
 
 const ProductList = () => {
     const { data, addToCart, handlePageChange, currentPage } = useContext(DataContext)
-    const [scroll, setScroll] = React.useState(0);
+    const [scroll, setScroll] = useState(0);
 
     const handleScroll = () => {
         setScroll(window.scrollY);
@@ -18,7 +18,7 @@ const ProductList = () => {
         window.scrollTo(0, 0);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
