@@ -34,7 +34,7 @@ import java.io.IOException;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors().disable()
                 .addFilterAt(new CustomUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
 
@@ -85,12 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
         ;
     }
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://storeapp120q.herokuapp.com")
-                .allowedMethods("*");
-    }
+
 
     private AuthenticationSuccessHandler successHandler() {
         return new AuthenticationSuccessHandler() {
