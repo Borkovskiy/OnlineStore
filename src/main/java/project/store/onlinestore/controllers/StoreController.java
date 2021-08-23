@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/store")
-@CrossOrigin
+
 public class StoreController {
     private static final int PAGE_SIZE = 6;
 
