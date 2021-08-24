@@ -56,10 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
+        http
                 .addFilterAt(new CustomUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
@@ -83,6 +82,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
 
+        // only if we wont auth from other server
+        //cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
 
         ;
     }
