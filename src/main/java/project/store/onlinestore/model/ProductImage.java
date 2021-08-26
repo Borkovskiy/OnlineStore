@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ProductImage {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne
     @JoinColumn(name = "product_id")
