@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './userStyle.css'
 import { Logout } from './Logout'
+import { UserContext } from './UserProvider'
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
-function UserProfile({ history }) {
-
-    let user = JSON.stringify(history.location.state.data.email)
-
-    user = user.replace(/['"]+/g, '');
-    console.log(user);
+function UserProfile() {
+    const { data } = useContext(UserContext)
 
     return (
         <div className="userStyle">
@@ -15,7 +14,7 @@ function UserProfile({ history }) {
                 <h3>Account</h3>
             </div>
             <div>
-                <p>Hi <b>{user}</b>,</p>
+                <p>Hi {data},</p>
                 <p>we are glad to see you in our store! <br />
                 Let's do some shopping!</p>
             </div>

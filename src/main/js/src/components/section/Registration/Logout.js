@@ -13,14 +13,12 @@ export function Logout() {
     e.preventDefault();
     const data = {};
 
-    fetch('logout', {
+    fetch('https://online-store-120.herokuapp.com/logout', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     }).then(() => {
         console.log('user-info: ', data)
-        // localStorage.setItem('user-info: ', JSON.stringify(data))
-        // history.push({ pathname: "/login", state: { data: data } })
         localStorage.setItem("user-info", '');
         localStorage.clear();
         history.push("/login");

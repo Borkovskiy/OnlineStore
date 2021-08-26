@@ -4,11 +4,16 @@ import { DataContext } from '../DataProvider'
 import '../css/Products.css'
 import { CarouselList } from './CarouselList'
 import { PaginationButtons } from './Pagination'
-import { ModalCart } from './Modals/ModalCart'
+import { ModalCart } from './ModalCart'
+import { Modal, Button, Form } from 'react-bootstrap'
 
 const ProductList = () => {
-    const { data, addToCart, handlePageChange, currentPage } = useContext(DataContext)
+    const { data, addToCart, handlePageChange, currentPage, handleShow } = useContext(DataContext)
     const [scroll, setScroll] = useState(0);
+    // const [show, setShow] = useState(true);
+
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     const handleScroll = () => {
         setScroll(window.scrollY);
@@ -25,11 +30,12 @@ const ProductList = () => {
 
     return (
         <>
+            <ModalCart />
             <div className="onTop">
-            <button
-                className={scroll < 300 ? "" : "show"}
-                onClick={handleUpButton}>
-                Go Up
+                <button
+                    className={scroll < 300 ? "" : "show"}
+                    onClick={handleUpButton}>
+                    Go Up
             </button>
             </div>
 
@@ -47,7 +53,10 @@ const ProductList = () => {
                                 </h3>
                                 <p>{product.shortDescription}</p>
                                 <span>${product.price}</span><br />
-                                <button onClick={() => addToCart(product.id)}>Add to cart</button>
+                                <button onClick={() => {
+                                    addToCart(product.id);
+                                    handleShow()
+                                    }}>Add to cart</button>
                             </div>
                         </div>
                     ))

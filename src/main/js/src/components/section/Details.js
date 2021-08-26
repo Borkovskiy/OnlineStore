@@ -3,12 +3,24 @@ import { DataContext } from '../DataProvider'
 import { Link, useParams } from 'react-router-dom'
 import '../css/Details.css'
 import axios from 'axios';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
 
 const Details = (props) => {
     const { addToCart, spinner } = useContext(DataContext)
     const [product, setProduct] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [index, setIndex] = useState(0)
+
+    const useStyles = makeStyles((theme) => ({
+        backdrop: {
+          zIndex: theme.zIndex.drawer + 1,
+          color: '#fff',
+        },
+      }));
+  
+      const classes = useStyles()
 
     const { id } = useParams();
 
@@ -27,7 +39,9 @@ const Details = (props) => {
     }, [id]);
 
     if (isLoading) {
-        return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" style={spinner} />
+        return <Backdrop className={classes.backdrop} open>
+          <CircularProgress color="inherit" />
+        </Backdrop>
       }
 
     const handleTab = index => {

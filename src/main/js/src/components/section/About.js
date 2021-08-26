@@ -4,7 +4,7 @@ import '../css/About.css'
 function About() {
     return (
         <div>
-            <header>
+            {/* <header>
                 <div className="image"></div>
                 <p>Welcome to Store</p>
             </header>
@@ -12,7 +12,7 @@ function About() {
                 <div>
                     <p>About us</p>
                 </div>
-            </main>
+            </main> */}
         </div>
     )
 }

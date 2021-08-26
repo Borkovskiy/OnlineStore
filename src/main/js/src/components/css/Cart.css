@@ -6,12 +6,15 @@ section .cart {
 .amount span{
     color: crimson;
     padding: 0 20px;
+    font-size: 20px;
 }
 
 .amount .count {
     width: 30px;
     height: 30px;
     border: 1px solid #555;
+    border-radius: 2px;
+    background-color: #333;
     outline: none;
     background: transparent;
     cursor: pointer;
@@ -54,7 +57,7 @@ section .cart {
 }
 
 .total h3 {
-    margin-right: 50px;
+    margin-right: 40px;
     color: black;
 }
 
