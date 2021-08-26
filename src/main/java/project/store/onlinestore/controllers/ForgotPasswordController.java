@@ -21,7 +21,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 
-//todo: create a exception, refactor to medots
+//todo: create a exception
 
 @RestController
 public class ForgotPasswordController {

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Base64;
+import java.util.HashMap;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +17,8 @@ public class SliderDTO {
         this.image = image;
     }
 
-    public static SliderDTO of(long id, byte[] image) {
+    public static SliderDTO of(long id, byte [] image) {
+
         return new SliderDTO(id, toBaseImage(image));
     }
 

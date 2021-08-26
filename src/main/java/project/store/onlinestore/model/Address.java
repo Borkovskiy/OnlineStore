@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
@@ -12,20 +11,18 @@ import java.util.List;
 @NoArgsConstructor
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
 
     @OneToOne
     @JoinColumn(name = "customUser_id")
     private CustomUser customUser;
 
-    @OneToMany
-    (cascade = CascadeType.ALL, mappedBy = "address")
-    private List<UserOrder> userOrder;
-
-
+    private String firstName;
+    private String lastName;
     private String address;
-    private String region;
+    private String Region;
+    private String email;
     private String shippingCountry;
     private String postalCode;
     private String city;

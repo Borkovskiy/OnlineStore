@@ -4,6 +4,7 @@ import lombok.Data;
 
 
 @Data
+
 public class PageCountDTO {
     private final long count;
     private final int pageSize;

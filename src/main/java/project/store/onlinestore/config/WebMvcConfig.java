@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 
 @Configuration
 public class WebMvcConfig {
-
     @Bean
     public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerCustomizer() {
         return container -> {
