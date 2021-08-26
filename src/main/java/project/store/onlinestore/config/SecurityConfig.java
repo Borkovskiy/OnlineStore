@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
                 .addFilterAt(new CustomUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .anyRequest().permitAll()
