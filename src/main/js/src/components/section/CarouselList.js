@@ -12,7 +12,7 @@ export const CarouselList = () => {
     useEffect(() => {
         const getImages = async () => {
             const result = await axios.get(
-                "https://online-store-120.herokuapp.com/store/slider"
+                "/store/slider"
             );
             setImages(result.data)
             // setLoading(false)
