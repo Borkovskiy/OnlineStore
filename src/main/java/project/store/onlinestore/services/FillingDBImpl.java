@@ -1,25 +1,22 @@
+package project.store.onlinestore.services;
 
 
-        package project.store.onlinestore.services;
+import org.springframework.stereotype.Service;
+import project.store.onlinestore.enums.ProductStatus;
+import project.store.onlinestore.enums.Provider;
+import project.store.onlinestore.enums.UserRole;
+import project.store.onlinestore.model.CustomUser;
+import project.store.onlinestore.model.Product;
+import project.store.onlinestore.model.Slider;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-        import org.springframework.data.domain.Pageable;
-        import org.springframework.stereotype.Service;
-        import project.store.onlinestore.enums.ProductStatus;
-        import project.store.onlinestore.enums.Provider;
-        import project.store.onlinestore.enums.UserRole;
-        import project.store.onlinestore.model.CustomUser;
-        import project.store.onlinestore.model.Product;
-        import project.store.onlinestore.model.Slider;
-
-        import java.io.File;
-        import java.io.IOException;
-        import java.nio.file.Files;
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-
-        import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
 
 //Class for initialising DB with DEMO products and sliders
 @Service
@@ -54,7 +51,6 @@ public class FillingDBImpl implements FillingDB {
     public FillingDBImpl(ProductService productService, UserService userService) {
         this.productService = productService;
         this.userService = userService;
-
     }
 
 
@@ -63,38 +59,35 @@ public class FillingDBImpl implements FillingDB {
         saveToBaseUsers();
         saveToBaseProducts();
         saveToBaseSlider();
-
     }
 
     private void saveToBaseUsers() {
         CustomUser user = new CustomUser("admin@admin", ("admin"), UserRole.ADMIN);
-        userService.addUser(user);
+        userService.addUser(user, Provider.LOCAL);
     }
 
     private void saveToBaseProducts() {
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i < 10; i++) {
             Product product = description.get(i);
-            product=getImage(i,product);
+            List<byte[]> productImage=getImage(i);
+            productImage.forEach((s)-> product.addImage(s));
             productService.addProduct(product);
         }
     }
 
 
-    private Product  getImage(int i,Product product) {
+    private List<byte[]> getImage(int i) {
         File folder = new File("product" + i);
         List<byte[]> productImage = new ArrayList<>();
         for (File f : folder.listFiles()) {
             try {
-                int number = parseInt(f.getName());
-
-                System.out.println(number);
                 byte[] fByte = fileToByte(f);
-                product.addImage(fByte);
+                productImage.add(fByte);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return product;
+        return productImage;
     }
 
     private byte[] fileToByte(File file) throws IOException {
@@ -107,7 +100,6 @@ public class FillingDBImpl implements FillingDB {
         File folder = new File("slider");
         for (File f : folder.listFiles()) {
             int number = parseInt(f.getName());
-
             System.out.println(number);
             try {
                 byte[] fByte = fileToByte(f);
@@ -123,3 +115,4 @@ public class FillingDBImpl implements FillingDB {
     }
 
 }
+

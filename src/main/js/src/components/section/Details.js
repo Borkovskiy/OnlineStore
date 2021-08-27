@@ -17,7 +17,7 @@ const Details = (props) => {
     useEffect(() => {
         async function getProduct() {
             const result = await axios(
-                `https://test1201111.herokuapp.com/store/products/${id}`
+                `/store/products/${id}`
             );
             console.log(result);
             setProduct(result.data);

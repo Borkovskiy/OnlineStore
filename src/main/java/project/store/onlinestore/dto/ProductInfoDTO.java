@@ -4,7 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import project.store.onlinestore.model.ProductImage;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
 
 
 @Data
@@ -37,10 +40,7 @@ public class ProductInfoDTO {
 
     public static List<String> toBase64(List<ProductImage> productImages) {
         List<String> base64Image = new ArrayList<>();
-
-        productImages.forEach((s)-> System.out.println(s.getId()));
-        base64Image.add(Base64.getEncoder().encodeToString(productImages.get(1).getImage()));
-
+        productImages.forEach((p) -> base64Image.add(Base64.getEncoder().encodeToString(p.getImage())));
         return base64Image;
     }
 }

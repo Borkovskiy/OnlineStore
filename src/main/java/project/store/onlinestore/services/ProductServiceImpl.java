@@ -1,12 +1,12 @@
 package project.store.onlinestore.services;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.store.onlinestore.dto.ProductInfoDTO;
-
 import project.store.onlinestore.dto.SliderDTO;
+import project.store.onlinestore.enums.ProductStatus;
+import project.store.onlinestore.exception.ProductNotFoundException;
 import project.store.onlinestore.model.Product;
 import project.store.onlinestore.model.Slider;
 import project.store.onlinestore.repositories.ProductRepository;
@@ -14,7 +14,6 @@ import project.store.onlinestore.repositories.SliderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -38,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductInfoDTO> getAllProduct(Pageable pageable) {
         List<ProductInfoDTO> result = new ArrayList<>();
-        List<Product> products = productRepository.retriveAll(pageable);
+        List<Product> products = productRepository.findProductByProductStatus(pageable, ProductStatus.ACTIVE);
         products.forEach((p) -> result.add(p.toProductInfoDTO()));
         return result;
     }
@@ -50,14 +49,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public ProductInfoDTO getProduct(long id) {
-        Optional<Product> product = productRepository.findById(id);
-        return product.get().toProductInfoDTO();
+    @Transactional
+    public ProductInfoDTO getProduct(long id) throws  ProductNotFoundException {
+        Product product = productRepository.findById(id).orElseThrow(()->
+                new ProductNotFoundException("Product doesnt exist "));
+        return product.toProductInfoDTO();
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<SliderDTO> getSlider() {
         List<SliderDTO> result = new ArrayList<>();
         List<Slider> sliders= sliderRepository.findAll();

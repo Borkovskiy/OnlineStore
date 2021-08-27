@@ -9,19 +9,12 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import project.store.onlinestore.services.FillingDB;
-import project.store.onlinestore.services.ProductService;
 
 @Configuration
 public class AppConfig {
-    private  final ProductService productService;
-
-    public AppConfig(ProductService productService) {
-        this.productService = productService;
-    }
 
     @Bean
     public CommandLineRunner commandLineRunner(final FillingDB fillingDB) {
-
         return args -> fillingDB.saveToBase();
     }
 

@@ -2,22 +2,27 @@ package project.store.onlinestore.controllers;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.store.onlinestore.dto.PageCountDTO;
 import project.store.onlinestore.dto.ProductInfoDTO;
-
 import project.store.onlinestore.dto.SliderDTO;
+import project.store.onlinestore.dto.result.BadRequestResult;
+import project.store.onlinestore.dto.result.ResultDTO;
+import project.store.onlinestore.exception.ProductNotFoundException;
 import project.store.onlinestore.services.ProductService;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/store")
 
 public class StoreController {
-    private static final int PAGE_SIZE = 6;
+    private static final int PAGE_SIZE = 8;
 
     private final ProductService productServices;
 
@@ -48,7 +53,7 @@ public class StoreController {
 
     @GetMapping("products/{id}")
     public ProductInfoDTO getProduct(
-            @PathVariable(value = "id") long productId) {
+            @PathVariable(value = "id") long productId) throws ProductNotFoundException {
         return productServices.getProduct(productId);
     }
     @GetMapping("slider")
@@ -58,5 +63,9 @@ public class StoreController {
             System.out.println(s.getId());
         }
         return productServices.getSlider();
+    }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ResultDTO> emailSendFail() {
+        return new ResponseEntity<>(new BadRequestResult("Product doesnt exist"), HttpStatus.BAD_REQUEST);
     }
 }

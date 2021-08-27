@@ -20,13 +20,13 @@ public class Product {
     private double price;
     private String color;
     private String shortDescription;
-    @Column(length = 700)
+    @Column(length = 1000)
     private String description;
 
     private ProductStatus productStatus;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<ProductImage> productImages=new ArrayList<>();
 
 

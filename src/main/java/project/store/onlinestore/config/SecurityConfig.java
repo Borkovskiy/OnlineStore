@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
-
+import project.store.onlinestore.security.AuthHandler;
 import project.store.onlinestore.security.CustomOAuth2UserService;
 import project.store.onlinestore.security.CustomUsernamePasswordAuthenticationFilter;
 
@@ -30,13 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final CustomOAuth2UserService oauthUserService;
+    private final AuthHandler authenticationSuccessHandler;
 
-
-    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, CustomOAuth2UserService oauthUserService) {
+    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, CustomOAuth2UserService oauthUserService, AuthHandler authenticationSuccessHandler) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
         this.oauthUserService = oauthUserService;
-
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
     @Autowired
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .oauth2Login()
                 .loginPage("/login")
-
+                .successHandler(authenticationSuccessHandler)
                 .userInfoEndpoint()
                 .userService(oauthUserService).and()
                 .and()
