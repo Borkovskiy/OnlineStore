@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 public class Slider {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Lob
     private byte [] image;
