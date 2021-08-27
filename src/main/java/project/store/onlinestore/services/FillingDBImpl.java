@@ -51,6 +51,7 @@ public class FillingDBImpl implements FillingDB {
     public FillingDBImpl(ProductService productService, UserService userService) {
         this.productService = productService;
         this.userService = userService;
+
     }
 
 
@@ -59,6 +60,7 @@ public class FillingDBImpl implements FillingDB {
         saveToBaseUsers();
         saveToBaseProducts();
         saveToBaseSlider();
+        System.out.println(productService.getProduct(1));
     }
 
     private void saveToBaseUsers() {
@@ -70,7 +72,7 @@ public class FillingDBImpl implements FillingDB {
         for (int i = 1; i < 10; i++) {
             Product product = description.get(i);
             List<byte[]> productImage=getImage(i);
-            productImage.forEach((s)-> product.addImage(s));
+            
             productService.addProduct(product);
         }
     }
