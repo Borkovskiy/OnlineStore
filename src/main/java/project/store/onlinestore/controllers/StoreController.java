@@ -12,7 +12,7 @@ import project.store.onlinestore.services.ProductService;
 
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/store")
 
