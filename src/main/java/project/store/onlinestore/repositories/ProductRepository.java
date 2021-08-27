@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    @Query(value ="SELECT u FROM Product u")
+    @Query(value ="SELECT u FROM Product u, ProductImage i ORDER BY i.id")
     List<Product> retriveAll(Pageable pageable);
 
 }
