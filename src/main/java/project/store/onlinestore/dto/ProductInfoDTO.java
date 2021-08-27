@@ -40,7 +40,11 @@ public class ProductInfoDTO {
 
     public static List<String> toBase64(List<ProductImage> productImages) {
         List<String> base64Image = new ArrayList<>();
-        productImages.forEach((p) -> base64Image.add(Base64.getEncoder().encodeToString(p.getImage())));
+        //productImages.forEach((p) -> base64Image.add(Base64.getEncoder().encodeToString(p.getImage())));
+        for (int i= 0;i<productImages.size();i++){
+
+            base64Image.add(Base64.getEncoder().encodeToString(productImages.get(i).getImage()));
+        }
         return base64Image;
     }
 }
