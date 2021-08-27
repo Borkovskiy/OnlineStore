@@ -1,24 +1,25 @@
-package project.store.onlinestore.services;
 
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import project.store.onlinestore.enums.ProductStatus;
-import project.store.onlinestore.enums.Provider;
-import project.store.onlinestore.enums.UserRole;
-import project.store.onlinestore.model.CustomUser;
-import project.store.onlinestore.model.Product;
-import project.store.onlinestore.model.Slider;
+        package project.store.onlinestore.services;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
-import static java.lang.Integer.parseInt;
+        import org.springframework.data.domain.Pageable;
+        import org.springframework.stereotype.Service;
+        import project.store.onlinestore.enums.ProductStatus;
+        import project.store.onlinestore.enums.Provider;
+        import project.store.onlinestore.enums.UserRole;
+        import project.store.onlinestore.model.CustomUser;
+        import project.store.onlinestore.model.Product;
+        import project.store.onlinestore.model.Slider;
+
+        import java.io.File;
+        import java.io.IOException;
+        import java.nio.file.Files;
+        import java.util.ArrayList;
+        import java.util.HashMap;
+        import java.util.List;
+
+        import static java.lang.Integer.parseInt;
 
 //Class for initialising DB with DEMO products and sliders
 @Service
@@ -74,19 +75,21 @@ public class FillingDBImpl implements FillingDB {
         for (int i = 1; i < 10; i++) {
             Product product = description.get(i);
             product=getImage(i,product);
-
             productService.addProduct(product);
         }
     }
 
 
-    private Product getImage(int i,Product product) {
+    private Product  getImage(int i,Product product) {
         File folder = new File("product" + i);
-        List<File> f= Arrays.asList(folder.listFiles());
-        for (int k =1;k<=f.size();k++) {
+        List<byte[]> productImage = new ArrayList<>();
+        for (File f : folder.listFiles()) {
             try {
-                byte[] fByte = fileToByte(f.get(k));
-                product.getProductImages().get(i).setImage(fByte);
+                int number = parseInt(f.getName());
+
+                System.out.println(number);
+                byte[] fByte = fileToByte(f);
+                product.addImage(fByte);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -104,6 +107,7 @@ public class FillingDBImpl implements FillingDB {
         File folder = new File("slider");
         for (File f : folder.listFiles()) {
             int number = parseInt(f.getName());
+
             System.out.println(number);
             try {
                 byte[] fByte = fileToByte(f);
@@ -119,4 +123,3 @@ public class FillingDBImpl implements FillingDB {
     }
 
 }
-
