@@ -13,17 +13,22 @@ export const UserProvider = (props) => {
 
     const [currentEmail, setCurrentEmail] = useState("")
 
-    const getCurrentUser = () => {
-        fetch('https://online-store-120.herokuapp.com/user', {
-            method: 'GET',
-            credentials: 'same-origin'
-        }).then(res => res.json())
-        .then(res => setCurrentEmail(res.data))
-        .catch(res => console.log(res.data))
-    }
+    // const getCurrentUser = () => {
+    //     fetch('https://online-store-120.herokuapp.com/user', {
+    //         method: 'GET',
+    //         credentials: 'same-origin'
+    //     }).then(res => res.json())
+    //     .then(res => setCurrentEmail(res.data))
+    //     .catch(res => console.log(res))
+    // }
+
+    const getCurrentUser = () => 
+        fetch('https://online-store-120.herokuapp.com/user').then((res) =>
+        res.json()
+        )
 
     useEffect(() => {
-        getCurrentUser()
+        getCurrentUser().then((currentEmail) => setCurrentEmail(currentEmail));
     }, [])
 
     const handleSubmit = (e) => {
@@ -43,7 +48,7 @@ export const UserProvider = (props) => {
     }
 
     return (
-        <UserContext.Provider value={{ email, data: currentEmail, handleSubmit, setEmail, setPassword }}>
+        <UserContext.Provider value={{ email, currentEmail, handleSubmit, setEmail, setPassword }}>
             {props.children}
         </UserContext.Provider>
     );

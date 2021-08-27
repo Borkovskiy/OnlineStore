@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 function UserProfile() {
-    const { data } = useContext(UserContext)
+    const { currentEmail } = useContext(UserContext)
+
+    if (!currentEmail) {
+        return "Loading...";
+    }
 
     return (
         <div className="userStyle">
@@ -14,7 +18,7 @@ function UserProfile() {
                 <h3>Account</h3>
             </div>
             <div>
-                <p>Hi {data},</p>
+                <p>Hi {currentEmail.description},</p>
                 <p>we are glad to see you in our store! <br />
                 Let's do some shopping!</p>
             </div>
