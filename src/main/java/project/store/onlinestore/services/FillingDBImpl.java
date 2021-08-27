@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class FillingDBImpl implements FillingDB {
 
     private Product getImage(int i,Product product) {
         File folder = new File("product" + i);
-        List<File> f= folder.listFiles()
+        List<File> f= Arrays.asList(folder.listFiles());
         for (int k =1;k<=f.size();k++) {
             try {
                 byte[] fByte = fileToByte(f.get(k));
