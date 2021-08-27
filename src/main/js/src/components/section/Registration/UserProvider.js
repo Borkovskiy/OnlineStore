@@ -19,6 +19,7 @@ export const UserProvider = (props) => {
             credentials: 'same-origin'
         }).then(res => res.json())
         .then(res => setCurrentEmail(res.data))
+        .catch(res => console.log(res.data))
     }
 
     useEffect(() => {
