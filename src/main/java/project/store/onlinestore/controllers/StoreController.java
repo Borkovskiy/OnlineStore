@@ -6,7 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import project.store.onlinestore.dto.PageCountDTO;
 import project.store.onlinestore.dto.ProductInfoDTO;
-import project.store.onlinestore.dto.ProductStartPageDTO;
+
 import project.store.onlinestore.dto.SliderDTO;
 import project.store.onlinestore.services.ProductService;
 

@@ -2,7 +2,7 @@ package project.store.onlinestore.services;
 
 import org.springframework.data.domain.Pageable;
 import project.store.onlinestore.dto.ProductInfoDTO;
-import project.store.onlinestore.dto.ProductStartPageDTO;
+
 import project.store.onlinestore.dto.SliderDTO;
 import project.store.onlinestore.model.Product;
 import project.store.onlinestore.model.Slider;

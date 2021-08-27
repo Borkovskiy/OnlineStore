@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.store.onlinestore.dto.ProductInfoDTO;
-import project.store.onlinestore.dto.ProductStartPageDTO;
+
 import project.store.onlinestore.dto.SliderDTO;
 import project.store.onlinestore.model.Product;
 import project.store.onlinestore.model.Slider;

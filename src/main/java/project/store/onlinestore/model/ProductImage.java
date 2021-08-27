@@ -2,27 +2,25 @@ package project.store.onlinestore.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import project.store.onlinestore.dto.SliderDTO;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-
-public class Slider {
+public class ProductImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     @Lob
     private byte [] image;
 
-    public Slider(long id, byte[] image) {
-        this.id = id;
+    public ProductImage(Product product, byte[] image) {
+        this.product = product;
         this.image = image;
-    }
-
-    public SliderDTO toSliderDTO() {
-        return SliderDTO.of(id, image);
     }
 }
