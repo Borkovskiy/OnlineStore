@@ -10,15 +10,15 @@ class App extends React.Component {
   render() {
     return (
       <DataProvider>
-        <UserProvider>
-          <div className="app">
-            <Router>
-              <Header />
+        <div className="app">
+          <Router>
+            <Header />
+            <UserProvider>
               <Section />
-              <Footer />
-            </Router>
-          </div>
-        </UserProvider>
+            </UserProvider>
+            <Footer />
+          </Router>
+        </div>
       </DataProvider>
     )
   }

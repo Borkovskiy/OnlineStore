@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useHistory } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createContext } from 'react'
+import {useHistory} from 'react-router-dom'
 
 export const UserContext = createContext()
 
 export const UserProvider = (props) => {
 
-    // let history = useHistory()
+    let history = useHistory()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -36,6 +37,7 @@ export const UserProvider = (props) => {
             console.log('user-info: ', data)
             localStorage.setItem('user-info: ', JSON.stringify(data))
             getCurrentUser()
+            history.push("/user")
         })
     }
 
