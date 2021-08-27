@@ -72,7 +72,7 @@ public class FillingDBImpl implements FillingDB {
     }
 
     private void saveToBaseProducts() {
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 2; i++) {
             Product product = description.get(i);
             product=getImage(i,product);
             productService.addProduct(product);
