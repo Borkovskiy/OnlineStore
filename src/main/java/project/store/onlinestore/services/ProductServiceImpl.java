@@ -50,12 +50,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductInfoDTO getProduct(long id) {
         Optional<Product> product = productRepository.findById(id);
         return product.get().toProductInfoDTO();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<SliderDTO> getSlider() {
         List<SliderDTO> result = new ArrayList<>();
         List<Slider> sliders= sliderRepository.findAll();
