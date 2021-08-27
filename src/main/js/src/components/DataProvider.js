@@ -119,7 +119,7 @@ export const DataProvider = (props) => {
   const getProducts = async (pageNumber) => {
     try {
       const res = await axios.get(
-        `https://online-store-120.herokuapp.com/store/products?page=${pageNumber}`
+        `https://test1201111.herokuapp.com/store/products?page=${pageNumber}`
       );
       console.log(res);
       setProducts(res.data);
