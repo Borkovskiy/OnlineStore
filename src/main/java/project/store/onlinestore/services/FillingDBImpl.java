@@ -1,6 +1,7 @@
 package project.store.onlinestore.services;
 
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import project.store.onlinestore.enums.ProductStatus;
 import project.store.onlinestore.enums.Provider;
@@ -60,7 +61,7 @@ public class FillingDBImpl implements FillingDB {
         saveToBaseUsers();
         saveToBaseProducts();
         saveToBaseSlider();
-        System.out.println(productService.getProduct(1));
+
     }
 
     private void saveToBaseUsers() {
@@ -72,7 +73,7 @@ public class FillingDBImpl implements FillingDB {
         for (int i = 1; i < 10; i++) {
             Product product = description.get(i);
             List<byte[]> productImage=getImage(i);
-            
+            productImage.forEach((s)-> product.addImage(s));
             productService.addProduct(product);
         }
     }
