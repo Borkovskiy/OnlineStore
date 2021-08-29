@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+import project.store.onlinestore.dto.EmailDTO;
 import project.store.onlinestore.dto.ProductInfoDTO;
 import project.store.onlinestore.dto.result.BadRequestResult;
 import project.store.onlinestore.dto.result.ResultDTO;
@@ -43,18 +44,18 @@ public class AuthController {
         return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
     }
     @GetMapping("/user")
-    public String user(Principal principal){
+    public EmailDTO user(Principal principal){
 
 
         if(principal.getClass().equals(OAuth2AuthenticationToken.class)){
             Map<String, Object> attrs=((OAuth2AuthenticationToken) principal).getPrincipal().getAttributes();
             String email = (String) attrs.get("email");
-            return email;
+            return new EmailDTO(email);
         }else {
 
 
 
-            return principal.getName();
+            return new EmailDTO(principal.getName());
         }
     }
     @ExceptionHandler(NullPointerException.class)
