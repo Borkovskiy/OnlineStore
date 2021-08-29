@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { createContext } from 'react'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export const UserContext = createContext()
 
@@ -13,19 +13,9 @@ export const UserProvider = (props) => {
 
     const [currentEmail, setCurrentEmail] = useState("")
 
-    // const getCurrentUser = () => {
-    //     fetch('https://online-store-120.herokuapp.com/user', {
-    //         method: 'GET',
-    //         credentials: 'same-origin'
-    //     }).then(res => res.json())
-    //     .then(res => setCurrentEmail(res.data))
-    //     .catch(res => console.log(res))
-    // }
-
     const getCurrentUser = () => 
-        fetch('https://online-store-120.herokuapp.com/user').then((res) =>
-        res.text()
-        )
+        fetch('https://online-store-120.herokuapp.com/user')
+            .then((res) => res.status === 200 ? res.json() : console.log(res))
 
     useEffect(() => {
         getCurrentUser().then((currentEmail) => setCurrentEmail(currentEmail));
@@ -39,7 +29,7 @@ export const UserProvider = (props) => {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
-        }).then(() => {
+        }).then(response => {
             console.log('user-info: ', data)
             localStorage.setItem('user-info: ', JSON.stringify(data))
             getCurrentUser()

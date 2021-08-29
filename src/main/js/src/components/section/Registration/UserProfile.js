@@ -8,21 +8,30 @@ import { Button } from 'react-bootstrap'
 function UserProfile() {
     const { currentEmail } = useContext(UserContext)
 
+    const btnstyle = { marginTop: '8px', marginBottom: '8px' }
+
     if (!currentEmail) {
-        return "Loading...";
+        return (
+            <div className="userStyle">
+                <div>
+                    <h3>Account</h3>
+                </div>
+                <div>
+                    <p>You are not loged in.</p>
+                </div>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                    <Button type='submit' variant='dark' style={btnstyle}>Go to Login</Button>
+                </Link>
+            </div>
+        )
     }
 
     return (
         <div className="userStyle">
             <div>
-                <h3>Account</h3>
+                <p>Hi, {currentEmail}</p>
+                <Logout />
             </div>
-            <div>
-                <p>Hi {currentEmail.description},</p>
-                <p>we are glad to see you in our store! <br />
-                Let's do some shopping!</p>
-            </div>
-            <Logout />
         </div>
     )
 }
