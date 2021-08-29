@@ -13,9 +13,12 @@ export const UserProvider = (props) => {
 
     const [currentEmail, setCurrentEmail] = useState("")
 
-    const getCurrentUser = () => 
+    const getCurrentUser = () =>
         fetch('https://online-store-120.herokuapp.com/user')
-            .then((res) => res.status === 200 ? res.json() : console.log(res))
+        .then((res) => res.status === 200 ? res.json() : console.log(res))
+            // .then((res) =>
+            //     res.json()
+            // )
 
     useEffect(() => {
         getCurrentUser().then((currentEmail) => setCurrentEmail(currentEmail));
@@ -33,7 +36,12 @@ export const UserProvider = (props) => {
             console.log('user-info: ', data)
             localStorage.setItem('user-info: ', JSON.stringify(data))
             getCurrentUser()
-            history.push("/user")
+            // history.push("/user")
+            if (response.status === 200) {
+                return history.push("/user")
+            } else {
+                console.log(response)
+            }
         })
     }
 

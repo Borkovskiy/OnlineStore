@@ -29,7 +29,8 @@ function UserProfile() {
     return (
         <div className="userStyle">
             <div>
-                <p>Hi, {currentEmail}</p>
+                <h3>Account</h3>
+                <p>Hi, {currentEmail.email}</p>
                 <Logout />
             </div>
         </div>
