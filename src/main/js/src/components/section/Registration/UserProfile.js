@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 function UserProfile() {
-    const { currentEmail } = useContext(UserContext)
+    const { currentEmail } = useContext(UserContext);
+    const data = useContext(UserContext);
+
+    console.log(data);
 
     const btnstyle = { marginTop: '8px', marginBottom: '8px' }
 
@@ -30,7 +33,7 @@ function UserProfile() {
         <div className="userStyle">
             <div>
                 <h3>Account</h3>
-                <p>Hi, {currentEmail.email}</p>
+                <p>Hi, {currentEmail}</p>
                 <Logout />
             </div>
         </div>
