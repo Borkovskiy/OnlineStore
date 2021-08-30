@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useHistory } from "react-router-dom";
 import { Button } from 'react-bootstrap'
 
 export function Logout() {
   let history = useHistory();
+  const data = useContext()
 
   const handleLogOut = (e) => {
     localStorage.setItem("user-info", '');
@@ -21,6 +22,7 @@ export function Logout() {
         console.log('user-info: ', data)
         localStorage.setItem("user-info", '');
         localStorage.clear();
+        data.handleLogout()
         history.push("/login");
     })
   }

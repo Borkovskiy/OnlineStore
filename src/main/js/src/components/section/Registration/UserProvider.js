@@ -37,6 +37,10 @@ export const UserProvider = (props) => {
         history.push("/user")
     }
 
+    const handleLogout = () => {
+        setCurrentEmail("")
+    }
+
     const getCurrentUser = () =>
         fetch('https://online-store-120.herokuapp.com/user')
             .then((res) =>
@@ -51,7 +55,7 @@ export const UserProvider = (props) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ email, currentEmail, handleSubmit, setEmail, setPassword }}>
+        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword }}>
             {props.children}
         </UserContext.Provider>
     );
