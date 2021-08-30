@@ -5,7 +5,6 @@ import { UserContext } from './UserProvider'
 
 export function Logout() {
   let history = useHistory();
-  // const data = useContext(UserContext)
   const {handleLogout} = useContext(UserContext)
 
   const handleLogOut = (e) => {

@@ -5,10 +5,11 @@ import { NavLink, Link } from 'react-router-dom'
 import './Login.css'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { UserContext } from './UserProvider'
+import { ModalForgot } from './ModalForgot'
 
 
 const Login = () => {
-    const { handleSubmit, setEmail, setPassword } = useContext(UserContext)
+    const { handleSubmit, setEmail, setPassword, handleShow } = useContext(UserContext)
 
     const paperStyle = { margin: '0 auto' }
     const avatarStyle = { backgroundColor: 'lightseagreen' }
@@ -17,6 +18,7 @@ const Login = () => {
 
     return (
         <>
+        <ModalForgot />
             <Grid>
                 <form onSubmit={handleSubmit} className='paperStyle' style={paperStyle}>
                     <Grid align='center'>
@@ -30,7 +32,7 @@ const Login = () => {
                     {/* </Link> */}
                     <a href="/oauth2/authorization/google">Sign in with Google</a>
                     <Typography>
-                        <a href="#" style={linkButton}>
+                        <a href="#" style={linkButton} onClick={handleShow}>
                             Forget password?
                     </a>
                     </Typography>

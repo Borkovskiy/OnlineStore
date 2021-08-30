@@ -5,8 +5,13 @@ import { useHistory } from 'react-router-dom'
 export const UserContext = createContext()
 
 export const UserProvider = (props) => {
-
     let history = useHistory()
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [forgotEmail, setForgotEmail] = useState("")
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -48,8 +53,21 @@ export const UserProvider = (props) => {
         getCurrentUser()
     }, [])
 
+    const forgotSubmit = (e) => {
+        e.preventDefault();
+        const data = { forgotEmail };
+
+        fetch('forgot_password', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: data
+        }).then(() => {
+            console.log('your email: ', data)
+        })
+    }
+
     return (
-        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword }}>
+        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword, show, handleClose, forgotSubmit, setForgotEmail, handleShow }}>
             {props.children}
         </UserContext.Provider>
     );
