@@ -40,7 +40,7 @@ public class ForgotPasswordController {
     ) throws MessagingException, UnsupportedEncodingException, JsonProcessingException, UserNotFoundException {
 
         JsonNode jsonNode = objectMapper.readTree(json);
-        String email=jsonNode.get("email").asText();
+        String email=jsonNode.get("forgotEmail").asText();
 
         String token = RandomString.make(30);
 
