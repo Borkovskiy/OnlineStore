@@ -5,12 +5,12 @@ import { UserContext } from './UserProvider'
 
 export function Logout() {
   let history = useHistory();
-  const data = useContext(UserContext)
+  // const data = useContext(UserContext)
 
   const handleLogOut = (e) => {
-    localStorage.setItem("user-info", '');
-    localStorage.clear();
-    history.push("/login");
+    // localStorage.setItem("user-info", '');
+    // localStorage.clear();
+    // history.push("/login");
 
     e.preventDefault();
     const data = {};
@@ -23,7 +23,7 @@ export function Logout() {
         console.log('user-info: ', data)
         localStorage.setItem("user-info", '');
         localStorage.clear();
-        data.handleLogout()
+        // data.handleLogout()
         history.push("/login");
     })
   }
