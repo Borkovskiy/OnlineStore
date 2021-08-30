@@ -63,6 +63,7 @@ export const UserProvider = (props) => {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('your email: ', data)
+            history.push("/reset")
         })
     }
 

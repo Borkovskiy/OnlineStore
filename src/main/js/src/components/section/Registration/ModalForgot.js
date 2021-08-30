@@ -17,7 +17,7 @@ export function ModalForgot() {
                         <Form.Control type="email" placeholder="Enter email" onChange={(e) => setForgotEmail(e.target.value)} required />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button type="submit" variant="dark" onClick={handleClose}>
+                    <Button type="submit" variant="dark" onClick={handleClose}>
                             Submit
                     </Button>
                     </Modal.Footer>
