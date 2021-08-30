@@ -47,7 +47,7 @@ export const UserProvider = (props) => {
                 res.json()
             )
     .then((res) => {
-        setCurrentEmail(res.email);
+        setCurrentEmail(res.description);
     })
 
     useEffect(() => {
