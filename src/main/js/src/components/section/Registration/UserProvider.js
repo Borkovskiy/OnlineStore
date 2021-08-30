@@ -24,12 +24,6 @@ export const UserProvider = (props) => {
         }).then(() => {
             console.log('user-info: ', data)
             localStorage.setItem('user-info: ', JSON.stringify(data))
-           
-            // if (response.status === 200) {
-            //     return history.push("/user")
-            // } else {
-            //     console.log(response)
-            // }
         });
 
         await getCurrentUser();
@@ -37,9 +31,9 @@ export const UserProvider = (props) => {
         history.push("/user")
     }
 
-    // const handleLogout = () => {
-    //     setCurrentEmail("")
-    // }
+    const handleLogout = () => {
+        setCurrentEmail("")
+    }
 
     const getCurrentUser = () =>
         fetch('https://online-store-120.herokuapp.com/user')
@@ -55,7 +49,7 @@ export const UserProvider = (props) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ email, currentEmail, handleSubmit, setEmail, setPassword }}>
+        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword }}>
             {props.children}
         </UserContext.Provider>
     );
