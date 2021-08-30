@@ -60,7 +60,7 @@ export const UserProvider = (props) => {
         fetch('forgot_password', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: data
+            body: JSON.stringify(data)
         }).then(() => {
             console.log('your email: ', data)
         })
