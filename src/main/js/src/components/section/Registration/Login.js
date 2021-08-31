@@ -13,7 +13,7 @@ const Login = () => {
     const { handleSubmit, setEmail, setPassword, handleShow } = useContext(UserContext)
 
     const paperStyle = { margin: '0 auto' }
-    const avatarStyle = { backgroundColor: 'lightseagreen' }
+    const avatarStyle = { backgroundColor: '#343a40' } //lightseagreen
     const btnstyle = { marginTop: '8px', marginBottom: '8px' }
     const linkButton = { marginTop: '8px' }
 

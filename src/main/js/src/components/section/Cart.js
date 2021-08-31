@@ -43,7 +43,7 @@ const Cart = () => {
                 }
                 <div className="total">
                     <Link to="/payment">Payment</Link>
-                    <h3>Total: ${total}</h3>
+                    <h4>Total: ${total}</h4>
                 </div>
             </>
         )

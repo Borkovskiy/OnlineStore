@@ -44,6 +44,10 @@ export const DataProvider = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  setTimeout(() => {
+    handleClose()
+}, 2000);
+
   useEffect(() => {
     decrease();
   }, [cart])

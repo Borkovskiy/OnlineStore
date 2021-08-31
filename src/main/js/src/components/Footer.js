@@ -39,7 +39,9 @@ export default function Footer() {
                             <a href="https://web.telegram.org/" style={{ filter: "brightness(0) invert(1)" }} target="_blank"><img src={telegram} alt="" width="30" /></a>
                         </div>
                     </div>
-                    <p className="copyright">Company Name © 2018</p>
+                    <p className="copyright">
+                        Company Name &copy; {new Date().getFullYear()}
+                    </p>
                 </div>
             </footer>
         </div>

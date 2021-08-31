@@ -11,12 +11,15 @@ export const UserProvider = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
     const [forgotEmail, setForgotEmail] = useState("")
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
 
     const [currentEmail, setCurrentEmail] = useState("")
+
+    const [status, setStatus] = useState(undefined)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -57,18 +60,23 @@ export const UserProvider = (props) => {
         e.preventDefault();
         const data = { forgotEmail };
 
-        fetch('forgot_password', {
+        fetch('login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('your email: ', data)
-            history.push("/reset_password")
+            setStatus({type: 'success'});
         })
+        .catch((error) => {
+            setStatus({type: 'error', error})
+        }).then(() => {
+            console.log('your email: ', data)
+        })
+        setTimeout(handleClose, 3000)
     }
 
     return (
-        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword, show, handleClose, forgotSubmit, setForgotEmail, handleShow }}>
+        <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword, show, handleClose, forgotSubmit, setForgotEmail, handleShow, status }}>
             {props.children}
         </UserContext.Provider>
     );

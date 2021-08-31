@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { Grid, Typography, Avatar, TextField } from '@material-ui/core'
-import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { NavLink, Link, useHistory } from 'react-router-dom'
@@ -82,7 +81,6 @@ const ResetPassword = () => {
                     <TextField type='Password' label='Password' placeholder='Enter your new Password' onChange={(e) => setPassword(e.target.value)} fullWidth required />
                     {/* <TextField type='password' label='Confirm Password' placeholder='Confirm your new password' fullWidth required /> */}
                     <Button type='submit' variant='dark' style={btnstyle} className="btn-block">Change Password</Button>
-                    {/* <Alert variant="filled" severity="success">This is a success alert — check it out!</Alert> */}
                 </form>
             </div>
         </>
