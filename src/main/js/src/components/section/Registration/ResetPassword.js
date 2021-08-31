@@ -38,16 +38,35 @@ const ResetPassword = () => {
 
     const classes = useStyles();
 
+    // const handleResetPassword = (e) => {
+    //     e.preventDefault();
+    //     const data = { password };
+    //     const authResult = new URLSearchParams(window.location.search);
+    //     const token = authResult.get('token')
+
+    //     fetch('new_password', {
+    //         method: 'POST',
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(data)
+    //     }).then(() => {
+    //         console.log('password: ', data)
+    //         history.push("/login")
+    //     })
+    // }
+
     const handleResetPassword = (e) => {
         e.preventDefault();
-        const data = { password };
+        const authResult = new URLSearchParams(window.location.search);
+        const token = authResult.get('token')
+        const data = { password, token };
 
         fetch('new_password', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('password: ', data)
+
+            console.log(data)
             history.push("/login")
         })
     }
