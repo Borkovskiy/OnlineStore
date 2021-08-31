@@ -84,7 +84,7 @@ public class ForgotPasswordController {
 
 
 
-    @PostMapping("/reset_password")
+    @PostMapping("/new_ password")
     public ResponseEntity<ResultDTO> processResetPassword(@RequestParam(name = "token") String token,@RequestBody String json
            ) throws UserNotFoundException, JsonProcessingException {
         JsonNode jsonNode = objectMapper.readTree(json);
