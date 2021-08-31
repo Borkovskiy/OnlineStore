@@ -10,10 +10,6 @@ import { Modal, Button, Form } from 'react-bootstrap'
 const ProductList = () => {
     const { data, addToCart, handlePageChange, currentPage, handleShow } = useContext(DataContext)
     const [scroll, setScroll] = useState(0);
-    // const [show, setShow] = useState(true);
-
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
 
     const handleScroll = () => {
         setScroll(window.scrollY);

@@ -9,6 +9,7 @@ import SignUp from './section/Registration/SignUp'
 import About from './section/About'
 import Google from './section/Registration/Google'
 import UserProfile from './section/Registration/UserProfile'
+import ResetPassword from './section/Registration/ResetPassword'
 
 export class Section extends Component {
     render() {
@@ -24,6 +25,7 @@ export class Section extends Component {
                 <Route path="/about" component={About} />
                 <Route path="/oauth2/authorization/google" component={Google} />
                 <Route path="/user" component={UserProfile} />
+                <Route path="/reset_password" component={ResetPassword} />
             </section>
         )
     }

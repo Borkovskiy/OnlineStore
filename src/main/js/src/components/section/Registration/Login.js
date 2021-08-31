@@ -6,6 +6,7 @@ import './Login.css'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { UserContext } from './UserProvider'
 import { ModalForgot } from './ModalForgot'
+import GoogleButton from 'react-google-button'
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
 
     return (
         <>
-        <ModalForgot />
+            <ModalForgot />
             <Grid>
                 <form onSubmit={handleSubmit} className='paperStyle' style={paperStyle}>
                     <Grid align='center'>
@@ -27,12 +28,10 @@ const Login = () => {
                     </Grid>
                     <TextField type='email' label='Email' onChange={(e) => setEmail(e.target.value)} placeholder='Enter your email' fullWidth required />
                     <TextField type='password' label='Password' onChange={(e) => setPassword(e.target.value)} placeholder='Enter your password' fullWidth required />
-                    {/* <Link to="/user" style={{textDecoration: 'none'}}> */}
-                        <Button type='submit' variant='dark' style={btnstyle} className="btn-block">Log in</Button>
-                    {/* </Link> */}
+                    <Button type='submit' variant='dark' style={btnstyle} className="btn-block">Log in</Button>
                     <a href="/oauth2/authorization/google">Sign in with Google</a>
                     <Typography>
-                        <a href="#" style={linkButton} onClick={handleShow}>
+                    <a href="#" style={linkButton} onClick={handleShow}>
                             Forget password?
                     </a>
                     </Typography>
