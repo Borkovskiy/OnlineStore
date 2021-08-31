@@ -42,7 +42,7 @@ const ResetPassword = () => {
         e.preventDefault();
         const data = { password };
 
-        fetch('reset_password', {
+        fetch('new_password', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -63,7 +63,7 @@ const ResetPassword = () => {
                     <TextField type='Password' label='Password' placeholder='Enter your new Password' onChange={(e) => setPassword(e.target.value)} fullWidth required />
                     {/* <TextField type='password' label='Confirm Password' placeholder='Confirm your new password' fullWidth required /> */}
                     <Button type='submit' variant='dark' style={btnstyle} className="btn-block">Change Password</Button>
-                    <Alert variant="filled" severity="success">This is a success alert — check it out!</Alert>
+                    {/* <Alert variant="filled" severity="success">This is a success alert — check it out!</Alert> */}
                 </form>
             </div>
         </>

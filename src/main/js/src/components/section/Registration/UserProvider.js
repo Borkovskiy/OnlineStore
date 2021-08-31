@@ -41,7 +41,7 @@ export const UserProvider = (props) => {
     }
 
     const getCurrentUser = () =>
-        fetch('https://online-store-120.herokuapp.com/user')
+        fetch('user_info')
             .then((res) =>
                 res.json()
             )
