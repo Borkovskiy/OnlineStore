@@ -43,7 +43,7 @@ public class AuthController {
 
         return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
     }
-    @GetMapping("/user")
+    @GetMapping("/user1")
     public EmailDTO user(Principal principal){
 
 
