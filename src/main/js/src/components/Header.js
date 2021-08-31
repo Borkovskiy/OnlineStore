@@ -35,6 +35,7 @@ export class Header extends Component {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/login">Login / Register</Link></li>
+                        <li><Link to="/reset_password">Reset Password</Link></li>
                         <li><Link to="/user">Profile</Link></li>
                         <li className="close" onClick={this.menuToggle}>
                             <img src={Close} alt="" style={{filter: "brightness(0) invert(1)"}} width="20" />
