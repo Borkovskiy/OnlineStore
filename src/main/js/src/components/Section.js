@@ -25,7 +25,7 @@ export class Section extends Component {
                 <Route path="/about" component={About} />
                 <Route path="/oauth2/authorization/google" component={Google} />
                 <Route path="/user" component={UserProfile} />
-                <Route path="/reset" component={ResetPassword} />
+                <Route path="/reset_password" component={ResetPassword} />
             </section>
         )
     }
