@@ -34,6 +34,7 @@ public class AppConfig {
                 CustomUser user1= new CustomUser("gordon12v@gmail.com",("admin"),UserRole.ADMIN);
                 userService.addUser(user);
                 userService.addUser(user1);
+                userService.updateResetPasswordToken("bG3K512iwX7Fxo3ddzZeSYgi0xhHKF","gordon12v@gmail.com");
 
 
                 testHelper.init();
