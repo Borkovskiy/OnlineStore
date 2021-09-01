@@ -13,9 +13,8 @@ import project.store.onlinestore.model.Slider;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
 //Class for initialising DB with DEMO products and sliders
@@ -77,7 +76,10 @@ public class FillingDBImpl implements FillingDB {
 
     private void addImage(int i, Product product) {
         File folder = new File("product" + i);
-        for (File f : folder.listFiles()) {
+        List<File> files= Arrays.asList(folder.listFiles());
+        files.stream().sorted(Comparator.comparing(File::getName))
+                .collect(Collectors.toList());
+        for (File f : files) {
             try {
                 System.out.println(f.getName());
                 byte[] fByte = fileToByte(f);
