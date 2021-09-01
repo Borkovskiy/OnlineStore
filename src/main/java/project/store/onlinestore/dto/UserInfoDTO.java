@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserInfoDTO {
 
-    private String name;
+    private String firstName;
     private String lastName;
     private String address;
     private String region;
@@ -17,7 +17,7 @@ public class UserInfoDTO {
     private String city;
 
     public UserInfoDTO(String name, String lastName, String address, String region, String email, String shippingCountry, String postalCode, String city) {
-        this.name = name;
+        this.firstName = name;
         this.lastName = lastName;
         this.address = address;
         this.region = region;
@@ -28,7 +28,7 @@ public class UserInfoDTO {
     }
 
     public UserInfoDTO(String name, String lastName, String email) {
-        this.name = name;
+        this.firstName = name;
         this.lastName = lastName;
         this.email = email;
     }
@@ -38,6 +38,6 @@ public class UserInfoDTO {
     }
 
     public static UserInfoDTO of(String name, String lastName, String email) {
-        return  new UserInfoDTO (name,lastName,email);
+        return  new UserInfoDTO(name,lastName,email);
     }
 }

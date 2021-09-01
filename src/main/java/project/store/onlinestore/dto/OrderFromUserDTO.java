@@ -8,24 +8,24 @@ import java.util.Map;
 
 @Data
 @NoArgsConstructor
-public class OrderForAdminDTO {
+public class OrderFromUserDTO {
     Map<Long,Integer> products= new HashMap<>();
 
     private String firstName;
     private String lastName;
     private String address;
-    private String Region;
+    private String region;
     private String email;
     private String shippingCountry;
     private String postalCode;
     private String city;
 
-    public OrderForAdminDTO(Map<Long, Integer> products, String firstName, String lastName, String address, String region, String email, String shippingCountry, String postalCode, String city) {
+    public OrderFromUserDTO(Map<Long, Integer> products, String firstName, String lastName, String address, String region, String email, String shippingCountry, String postalCode, String city) {
         this.products = products;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        Region = region;
+        this.region = region;
         this.email = email;
         this.shippingCountry = shippingCountry;
         this.postalCode = postalCode;

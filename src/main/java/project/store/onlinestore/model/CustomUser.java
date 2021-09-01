@@ -50,7 +50,7 @@ public class CustomUser {
         this.email = email;
         this.name = name;
     }
-    public  UserInfoDTO toUserInfoDTO(){
+    public UserInfoDTO toUserInfoDTO(){
         if(address==null)return UserInfoDTO.of(name,lastName,email);
         return UserInfoDTO.of(name,lastName,address.getAddress(),address.getRegion(),email,address.getShippingCountry(),address.getPostalCode(),address.getCity());
     }

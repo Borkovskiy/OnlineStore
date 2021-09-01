@@ -76,6 +76,7 @@ public class FillingDBImpl implements FillingDB {
 
     private void addImage(int i, Product product) {
         File folder = new File("product" + i);
+        //need sorting because sending to heroku- unsorted files
         List<File> files= Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
                 .collect(Collectors.toList());
 
