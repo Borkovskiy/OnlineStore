@@ -51,8 +51,6 @@ public class ForgotPasswordController {
             sendEmail(email,resetPasswordLink);
 
 
-
-
             return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
 
     }

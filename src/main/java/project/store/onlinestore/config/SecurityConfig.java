@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import project.store.onlinestore.security.AuthHandler;
 import project.store.onlinestore.security.CustomOAuth2UserService;
 import project.store.onlinestore.security.CustomUsernamePasswordAuthenticationFilter;
 
@@ -40,11 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final CustomOAuth2UserService oauthUserService;
+    private final AuthHandler authenticationSuccessHandler;
 
-    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, CustomOAuth2UserService oauthUserService) {
+    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, CustomOAuth2UserService oauthUserService, AuthHandler authenticationSuccessHandler) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
         this.oauthUserService = oauthUserService;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
     @Autowired
@@ -72,6 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .csrf().disable()
                 .oauth2Login()
                 .loginPage("/login")
+                .successHandler(authenticationSuccessHandler)
                 .userInfoEndpoint()
                 .userService(oauthUserService).and()
                 .and()
@@ -80,52 +84,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .deleteCookies("JSESSIONID")
+                .deleteCookies("JSESSIONID");
 
         // only if we wont auth from other server
         //cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
 
-        ;
+
     }
 
 
     private AuthenticationSuccessHandler successHandler() {
-        return new AuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                httpServletResponse.getWriter().append("OK");
-                httpServletResponse.setStatus(200);
-            }
+        return (httpServletRequest, httpServletResponse, authentication) -> {
+            httpServletResponse.getWriter().append("OK");
+            httpServletResponse.setStatus(200);
         };
     }
 
     private AuthenticationFailureHandler failureHandler() {
-        return new AuthenticationFailureHandler() {
-            @Override
-            public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                httpServletResponse.getWriter().append("Authentication failure");
-                httpServletResponse.setStatus(401);
-            }
+        return (httpServletRequest, httpServletResponse, e) -> {
+            httpServletResponse.getWriter().append("Authentication failure");
+            httpServletResponse.setStatus(401);
         };
     }
 
     private AccessDeniedHandler accessDeniedHandler() {
-        return new AccessDeniedHandler() {
-            @Override
-            public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
-                httpServletResponse.getWriter().append("Access denied");
-                httpServletResponse.setStatus(403);
-            }
+        return (httpServletRequest, httpServletResponse, e) -> {
+            httpServletResponse.getWriter().append("Access denied");
+            httpServletResponse.setStatus(403);
         };
     }
 
     private AuthenticationEntryPoint authenticationEntryPoint() {
-        return new AuthenticationEntryPoint() {
-            @Override
-            public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                httpServletResponse.getWriter().append("Not authenticated");
-                httpServletResponse.setStatus(401);
-            }
+        return (httpServletRequest, httpServletResponse, e) -> {
+            httpServletResponse.getWriter().append("Not authenticated");
+            httpServletResponse.setStatus(401);
         };
     }
 

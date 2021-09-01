@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import project.store.onlinestore.dto.SliderDTO;
 
 import javax.persistence.*;
-import java.util.HashMap;
 
 @Entity
 @Data
