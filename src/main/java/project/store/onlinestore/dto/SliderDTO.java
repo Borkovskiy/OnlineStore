@@ -17,8 +17,7 @@ public class SliderDTO {
         this.image = image;
     }
 
-    public static SliderDTO of(long id, byte [] image) {
-
+    public static SliderDTO of(long id, byte[] image) {
         return new SliderDTO(id, toBaseImage(image));
     }
 

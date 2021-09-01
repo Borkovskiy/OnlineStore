@@ -28,7 +28,6 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
             if (parsedReq != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 AuthReq authReq = mapper.readValue(parsedReq, AuthReq.class);
-                System.out.println(authReq);
                 return new UsernamePasswordAuthenticationToken(authReq.getEmail(), authReq.getPassword());
             }
         } catch (Exception e) {

@@ -13,6 +13,7 @@ import project.store.onlinestore.dto.ProductInfoDTO;
 import project.store.onlinestore.dto.result.BadRequestResult;
 import project.store.onlinestore.dto.result.ResultDTO;
 import project.store.onlinestore.dto.result.SuccessResult;
+import project.store.onlinestore.enums.Provider;
 import project.store.onlinestore.enums.UserRole;
 import project.store.onlinestore.model.CustomUser;
 import project.store.onlinestore.services.UserService;
@@ -25,39 +26,32 @@ import java.util.Map;
 @CrossOrigin
 public class AuthController {
 
-
     private final UserService userService;
-
 
     public AuthController(UserService userService) {
         this.userService = userService;
-
     }
 
     @PostMapping("/signup")
     public ResponseEntity<ResultDTO> addNewUser(@RequestBody CustomUser user){
-        System.out.println(user);
-       if(! userService.addUser(user)){
-           return  new ResponseEntity<>(new BadRequestResult("user already exist"), HttpStatus.BAD_REQUEST);
-       }
+        if(! userService.addUser(user, Provider.LOCAL)){
+            return  new ResponseEntity<>(new BadRequestResult("user already exist"), HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
     }
+
     @GetMapping("/user_info")
-    public EmailDTO user(Principal principal){
-
-
-        if(principal.getClass().equals(OAuth2AuthenticationToken.class)){
-            Map<String, Object> attrs=((OAuth2AuthenticationToken) principal).getPrincipal().getAttributes();
+    public EmailDTO user(Principal principal) {
+        if (principal.getClass().equals(OAuth2AuthenticationToken.class)) {
+            Map<String, Object> attrs = ((OAuth2AuthenticationToken) principal).getPrincipal().getAttributes();
             String email = (String) attrs.get("email");
             return new EmailDTO(email);
-        }else {
-
-
-
+        } else {
             return new EmailDTO(principal.getName());
         }
     }
+
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ResultDTO> handleException() {
         return new ResponseEntity<>(new BadRequestResult("user not authorized"), HttpStatus.UNAUTHORIZED);
