@@ -10,6 +10,6 @@ import java.util.List;
 
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    List<Product> findProductByProductStatusAndAndProductImagesOrderByIdIdAsc(Pageable pageable, ProductStatus productStatus);
+    List<Product> findProductByProductStatusAndProductImagesOrderByIdIdAsc(Pageable pageable, ProductStatus productStatus);
 
 }
