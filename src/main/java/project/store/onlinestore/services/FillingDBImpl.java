@@ -76,9 +76,9 @@ public class FillingDBImpl implements FillingDB {
 
     private void addImage(int i, Product product) {
         File folder = new File("product" + i);
-        List<File> files= Arrays.asList(folder.listFiles());
-        files.stream().sorted(Comparator.comparing(File::getName))
+        List<File> files= Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
                 .collect(Collectors.toList());
+
         for (File f : files) {
             try {
                 System.out.println(f.getName());
