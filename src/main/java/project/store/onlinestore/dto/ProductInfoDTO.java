@@ -43,6 +43,7 @@ public class ProductInfoDTO {
         for (int i= 0;i<productImages.size();i++){
 
             base64Image.add(Base64.getEncoder().encodeToString(productImages.get(i).getImage()));
+            System.out.println(productImages.get(i).getId());
         }
         return base64Image;
     }
