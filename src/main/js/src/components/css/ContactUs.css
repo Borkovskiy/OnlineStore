@@ -1,20 +1,22 @@
-header {
+.contactHeader {
     width: 100%;
-    height: 250px;
+    height: 300px;
     background-size: cover; 
     background-repeat: no-repeat;
     position: relative;
     top: 0;
     left: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/40238/25b15e689033556a005a423094dfce29/hero-desktop-data.jpg/w1800_q80.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/632372/a2faf113d3c1d8877c49d1cbbfe148a1/image-desktop-data.jpg/w1100_q80.jpg);
 }
 
-header > p {
+
+
+.contactHeader > p {
     display: block;
     font-size: 3rem;
     position: absolute;
     font-weight: 500;
-    font-family: Chronicle Display, Times New Roman, serif;
+    font-family: Times, serif;
     color: white;
     left: 50px;
     top: 70px;
@@ -23,15 +25,15 @@ header > p {
 }
 
 @media (max-width: 820px) {
-    header > p {
+    .contactHeader > p {
         left: 20px;
         top: 95px;
         font-size: 2rem;
         line-height: 1;
     }
     
-    header {
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/40242/e44458f7e89f013bcb476fa40cafd2aa/hero-mobile-data.jpg/w700_q80.jpg);
+    .contactHeader {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.net-a-porter.com/content/images/cms/ycm/resource/blob/632372/a2faf113d3c1d8877c49d1cbbfe148a1/image-desktop-data.jpg/w700_q80.jpg);
         width: 100%;
         height: 200px;
         background-size: cover; 
@@ -66,19 +68,34 @@ main {
     box-sizing: border-box;
 }
 
-main > div:first-child > h2 {
-    font-family: Times, serif;
-    margin: 30px 0;
-}
-
 .text-left {
     float: left;
     width: 60%;
     min-width: 250px;
 }
 
+.text-left h3 {
+    font-family: Times, serif;
+}
+
 .text-left > p {
     margin-bottom: 30px;
+}
+
+.text-left > p:nth-child(3) > a {
+    color: #212529;
+    text-decoration: underline;
+}
+
+.text-left > p:nth-child(7) > a {
+    color: #212529;
+    text-decoration: underline;
+}
+
+.text-left > p:nth-child(4) {
+    border-bottom: 1px solid rgba(17 17 17 / 19%);
+    padding-bottom: 30px;
+    margin: 0;
 }
 
 .text-right {
@@ -87,11 +104,14 @@ main > div:first-child > h2 {
     padding-left: 130px;
 }
 
-.text-right > h4 {
+.text-right > h3 {
     text-align: left;
     font-family: Times, serif;
-    padding: 0;
     white-space: nowrap;
+}
+
+.text-right > p {
+    text-align: left;
 }
 
 .onTop > button {
