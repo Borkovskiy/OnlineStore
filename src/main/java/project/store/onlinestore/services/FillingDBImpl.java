@@ -69,25 +69,24 @@ public class FillingDBImpl implements FillingDB {
     private void saveToBaseProducts() {
         for (int i = 1; i < 10; i++) {
             Product product = description.get(i);
-            List<byte[]> productImage=getImage(i);
-            productImage.forEach((s)-> product.addImage(s));
+            addImage(i, product);
             productService.addProduct(product);
         }
     }
 
 
-    private List<byte[]> getImage(int i) {
+    private void addImage(int i, Product product) {
         File folder = new File("product" + i);
-        List<byte[]> productImage = new ArrayList<>();
         for (File f : folder.listFiles()) {
             try {
+                System.out.println(f.getName());
                 byte[] fByte = fileToByte(f);
-                productImage.add(fByte);
+                product.addImage(fByte);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return productImage;
+
     }
 
     private byte[] fileToByte(File file) throws IOException {
