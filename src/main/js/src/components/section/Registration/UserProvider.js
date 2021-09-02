@@ -60,12 +60,12 @@ export const UserProvider = (props) => {
         e.preventDefault();
         const data = { forgotEmail };
         try {
-          const result = await fetch("https://online-store-120.herokuapp.com/login", {
+          const result = await fetch("https://online-store-120.herokuapp.com/forgot_password", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
           }).then((response) => {
-            if (response.status >= 200 && response.status <= 299) {
+            if (response.status == 200) {
               return response.json();
             } else {
               throw Error(response.statusText);
