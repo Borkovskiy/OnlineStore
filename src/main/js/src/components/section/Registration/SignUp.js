@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Typography, Avatar, TextField, Checkbox } from '@material-ui/core'
-import { Button } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { FormHelperText } from '@material-ui/core'
 import * as Yup from 'yup'
@@ -17,6 +17,11 @@ const SignUp = () => {
     const headerStyle = { margin: '0' }
     const avatarStyle = { backgroundColor: 'lightseagreen' }
     const marginTop = { marginTop: '5px' }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const initialValues = {
         name: '',
         email: '',
@@ -54,7 +59,7 @@ const SignUp = () => {
         }).then(() => {
             console.log('new data added: ', values)
             localStorage.setItem('new data added: ', JSON.stringify(values))
-            history.push({ pathname: "/user", state: { values: values } })
+            // history.push({ pathname: "/user", state: { values: values } })
         })
     }
 
@@ -66,6 +71,19 @@ const SignUp = () => {
 
     return (
         <Grid>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Sign In</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>You have successfully registered!</Modal.Body>
+                <Modal.Footer>
+                    <Link to="/login" className="cart">
+                        <Button variant="dark">
+                            Login
+                        </Button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
             <Typography elevation={20} className='paperStyle' style={paperStyle}>
                 <Grid align='center'>
                     <Avatar style={avatarStyle}>
@@ -100,7 +118,7 @@ const SignUp = () => {
                                 label="I accept the terms and conditions."
                             />
                             <FormHelperText><ErrorMessage name="termsAndConditions" /></FormHelperText>
-                            <Button type='submit' variant='dark' disabled={props.isSubmitting} className="btn-block">{props.isSubmitting ? "Loading" : "Sign Up"}</Button>
+                            <Button type='submit' variant='dark' disabled={props.isSubmitting} onClick={handleShow} className="btn-block">{props.isSubmitting ? "Loading" : "Sign Up"}</Button>
                             <Typography style={{ marginTop: '10px' }}>Already have an account?&nbsp;
                             <NavLink to="/login">Log in</NavLink>
                             </Typography>

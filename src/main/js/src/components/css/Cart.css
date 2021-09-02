@@ -38,7 +38,7 @@ section .cart {
     margin: 20px;
 }
 
-.total a {
+.total button {
     text-decoration: none;
     background: #242424f2;
     color: white;

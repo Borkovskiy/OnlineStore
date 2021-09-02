@@ -28,7 +28,7 @@ export const DataProvider = (props) => {
   const classes = useStyles()
 
   const addToCart = (id) => {
-    console.log(cart)
+    console.log(...cart)
     const check = cart.every(item => {
       return item.id !== id
     })
@@ -41,12 +41,19 @@ export const DataProvider = (props) => {
     }
   };
 
+  const productIdCount = {
+    products: cart.reduce((acc, val) => {
+        acc[val.id] = val.count;
+        return acc;
+    }, {})
+}
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   setTimeout(() => {
     handleClose()
-}, 2000);
+}, 3000);
 
   useEffect(() => {
     decrease();
@@ -96,6 +103,7 @@ export const DataProvider = (props) => {
         }
       })
       setCart(cart);
+      localStorage.setItem('cart: ', cart)
       getTotal();
     }
   }
@@ -111,6 +119,7 @@ export const DataProvider = (props) => {
       );
       console.log(res);
       setProducts(res.data);
+      localStorage.setItem('user-info: ', res.data)
       setLoading(false)
     } catch (err) {
       console.log(err);
@@ -129,7 +138,7 @@ export const DataProvider = (props) => {
   };
 
   return (
-    <DataContext.Provider value={{ data: products, handleShow, show, handleClose, handlePageChange, currentPage, addToCart, cart, decrease, increase, total, getTotal, removeProduct }}>
+    <DataContext.Provider value={{ data: products, handleShow, show, handleClose, handlePageChange, currentPage, addToCart, cart, decrease, increase, total, getTotal, removeProduct, productIdCount }}>
       {props.children}
     </DataContext.Provider>
   );

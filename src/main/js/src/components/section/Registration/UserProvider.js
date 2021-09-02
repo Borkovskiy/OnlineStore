@@ -11,7 +11,7 @@ export const UserProvider = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    
+
     const [forgotEmail, setForgotEmail] = useState("")
 
     const [email, setEmail] = useState("");
@@ -48,9 +48,9 @@ export const UserProvider = (props) => {
             .then((res) =>
                 res.json()
             )
-    .then((res) => {
-        setCurrentEmail(res.email);
-    })
+            .then((res) => {
+                setCurrentEmail(res.email);
+            })
 
     useEffect(() => {
         getCurrentUser()
@@ -65,13 +65,13 @@ export const UserProvider = (props) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            setStatus({type: 'success'});
+            setStatus({ type: 'success' });
         })
-        .catch((error) => {
-            setStatus({type: 'error', error})
-        }).then(() => {
-            console.log('your email: ', data)
-        })
+            .catch((error) => {
+                setStatus({ type: 'error', error })
+            }).then(() => {
+                console.log('your email: ', data)
+            })
         setTimeout(handleClose, 3000)
     }
 
