@@ -18,6 +18,8 @@ export function ModalForgot() {
 
     const classes = useStyles();
 
+    console.log(status)
+
     return (
         <>
             <Modal show={show} onHide={handleClose} className={classes.root}>
@@ -30,9 +32,8 @@ export function ModalForgot() {
                         <Form.Control type="email" className="mb-3" placeholder="Enter email" onChange={(e) => setForgotEmail(e.target.value)} required />
                         {status?.type === 'success' && <Alert severity="success">A link for resetting your password has been sent to the email address.</Alert>}
                         {status?.type === 'error' && (
-                            <Alert severity="dangerous">This email is not exist</Alert>
+                            <Alert severity="dangerous">This email does not exist</Alert>
                         )}
-                        {/* <Alert severity="success">A link for resetting your password has been sent to the email address.</Alert> */}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button type="submit" variant="dark">

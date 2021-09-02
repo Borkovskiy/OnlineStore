@@ -56,24 +56,24 @@ export const UserProvider = (props) => {
         getCurrentUser()
     }, [])
 
-    const forgotSubmit = (e) => {
+    const forgotSubmit = async (e) => {
         e.preventDefault();
         const data = { forgotEmail };
-
-        fetch('login', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        }).then(() => {
-            setStatus({ type: 'success' });
-        })
-            .catch((error) => {
-                setStatus({ type: 'error', error })
-            }).then(() => {
-                console.log('your email: ', data)
-            })
-        setTimeout(handleClose, 3000)
-    }
+        try {
+            const result = await fetch("https://online-store-120.herokuapp.com/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+            console.log("success scope");
+            setStatus({ type: "success" });
+        } catch (error) {
+            console.log("error scope");
+            setStatus({ type: "error", error });
+        } finally {
+            setTimeout(handleClose, 3000);
+        }
+    };
 
     return (
         <UserContext.Provider value={{ email, currentEmail, handleLogout, handleSubmit, setEmail, setPassword, show, handleClose, forgotSubmit, setForgotEmail, handleShow, status }}>
