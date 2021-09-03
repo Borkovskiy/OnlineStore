@@ -1,7 +1,7 @@
 package project.store.onlinestore.security;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -10,39 +10,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-
-            BufferedReader reader = request.getReader();
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            String parsedReq = sb.toString();
-            if (parsedReq != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                AuthReq authReq = mapper.readValue(parsedReq, AuthReq.class);
-                return new UsernamePasswordAuthenticationToken(authReq.getEmail(), authReq.getPassword());
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            String json  = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+            ObjectMapper objectMapper= new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(json);
+            String email= jsonNode.get("email").asText();
+            String password= jsonNode.get("password").asText();
+            return new UsernamePasswordAuthenticationToken(email, password);
+        } catch (IOException e) {
+            e.printStackTrace();
             throw new InternalAuthenticationServiceException("Failed to parse authentication request body");
         }
-        return null;
     }
-
-    @Data
-    public static class AuthReq {
-        String email;
-        String password;
-
-
-    }
-
 }
