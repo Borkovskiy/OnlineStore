@@ -33,10 +33,10 @@ export default function Footer() {
                             <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
                         </div>
                         <div className="col item social">
-                            <a href="http://www.google.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank"><img src={facebook} alt="" width="30" /></a>
-                            <a href="http://www.twitter.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank"><img src={twitter} alt="" width="30" /></a>
-                            <a href="http://www.instagram.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank"><img src={instagram} alt="" width="30" /></a>
-                            <a href="https://web.telegram.org/" style={{ filter: "brightness(0) invert(1)" }} target="_blank"><img src={telegram} alt="" width="30" /></a>
+                            <a href="http://www.google.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank" rel="noreferrer"><img src={facebook} alt="" width="30" /></a>
+                            <a href="http://www.twitter.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank" rel="noreferrer"><img src={twitter} alt="" width="30" /></a>
+                            <a href="http://www.instagram.com" style={{ filter: "brightness(0) invert(1)" }} target="_blank" rel="noreferrer"><img src={instagram} alt="" width="30" /></a>
+                            <a href="https://web.telegram.org/" style={{ filter: "brightness(0) invert(1)" }} target="_blank" rel="noreferrer"><img src={telegram} alt="" width="30" /></a>
                         </div>
                     </div>
                     <p className="copyright">

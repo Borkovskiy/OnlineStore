@@ -43,17 +43,17 @@ export const DataProvider = (props) => {
 
   const productIdCount = {
     products: cart.reduce((acc, val) => {
-        acc[val.id] = val.count;
-        return acc;
+      acc[val.id] = val.count;
+      return acc;
     }, {})
-}
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   setTimeout(() => {
     handleClose()
-}, 3000);
+  }, 3000);
 
   useEffect(() => {
     decrease();

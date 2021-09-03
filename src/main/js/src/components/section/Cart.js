@@ -13,7 +13,7 @@ const Cart = () => {
     console.log(cart)
 
     if (cart.length === 0) {
-        return <h4 style={{ textAlign: "center" }}>No products</h4>
+        return <h4 style={{ textAlign: "center", height: "10rem" }}>No products</h4>
     } else {
         return (
             <>
@@ -21,7 +21,7 @@ const Cart = () => {
                     cart.map(item => (
                         <div className="details cart" key={item.id}>
                             <div className="cart_img">
-                                <img src={`data:image/jpeg;base64,${item.productImage['1']}`} />
+                                <img src={`data:image/jpeg;base64,${item.productImage['1']}`} alt="" />
                             </div>
                             <div className="box">
                                 <div className="row">
@@ -45,9 +45,11 @@ const Cart = () => {
                     ))
                 }
                 <div className="total">
-                    {/* <Link to="/payment">Payment</Link> */}
-                    {/* <button component={Link} to="/payment" variant="outlined">Payment</button> */}
-                    <button type="submit" variant="outlined">Payment</button>
+                    <Link to="/payment">
+                        <button type="button">
+                        Payment
+                        </button>
+                    </Link>
                     <h4>Total: ${total}</h4>
                 </div>
             </>

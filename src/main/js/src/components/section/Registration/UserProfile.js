@@ -2,39 +2,47 @@ import React, { useContext } from 'react'
 import './userStyle.css'
 import { Logout } from './Logout'
 import { UserContext } from './UserProvider'
+import { ModalForgot } from './ModalForgot'
 import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
 
 function UserProfile() {
-    const { currentEmail } = useContext(UserContext);
+    const { currentEmail, handleShow } = useContext(UserContext);
     const data = useContext(UserContext);
 
     console.log(data);
 
-    const btnstyle = { marginTop: '8px', marginBottom: '8px' }
-
     if (!currentEmail) {
         return (
-            <div className="userStyle">
+            <div>
                 <div>
-                    <h3>Account</h3>
+                    <div className="backgroundImg"></div>
                 </div>
-                <div>
-                    <p>You are not loged in.</p>
+                <div className="textUser">
+                    <h3>You are not loged in</h3>
+                    <Link to="/login" style={{ textDecoration: 'none' }}>
+                        <button className="userButton" type='submit' variant='dark'>Go to Login</button>
+                    </Link>
                 </div>
-                <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button type='submit' variant='dark' style={btnstyle}>Go to Login</Button>
-                </Link>
             </div>
         )
     }
 
     return (
-        <div className="userStyle">
+        <div>
+            <div className="backgroundImg">
+                <div />
+                <p>Welcome to your account</p>
+            </div>
+            <ModalForgot />
             <div>
-                <h3>Account</h3>
-                <p>Hi, {currentEmail}</p>
-                <Logout />
+                <div className="loggedUser">
+                    {/* <h3>Account</h3> */}
+                    <h3>Personal Details</h3>
+                    <p>Your email: <b>{currentEmail}</b></p>
+                    <h3>Privacy Settings</h3>
+                    <button className="userButton" onClick={handleShow}>Change your password</button> <br />
+                    <Logout />
+                </div>
             </div>
         </div>
     )

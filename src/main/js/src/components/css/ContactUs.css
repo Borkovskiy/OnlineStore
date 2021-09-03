@@ -69,6 +69,10 @@ main {
     font-family: Times, serif;
 }
 
+.text-left :nth-child(5) {
+    margin-top: 25px;
+}
+
 .text-left>p {
     margin-bottom: 30px;
 }

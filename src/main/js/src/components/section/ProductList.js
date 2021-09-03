@@ -5,7 +5,6 @@ import '../css/Products.css'
 import { CarouselList } from './CarouselList'
 import { PaginationButtons } from './Pagination'
 import { ModalCart } from './ModalCart'
-import { Modal, Button, Form } from 'react-bootstrap'
 
 const ProductList = () => {
     const { data, addToCart, handlePageChange, currentPage, handleShow } = useContext(DataContext)
@@ -41,7 +40,7 @@ const ProductList = () => {
                     data.map(product => (
                         <div className="card" key={product.id}>
                             <Link to={`/products/${product.id}`}>
-                                <img src={`data:image/jpeg;base64,${product.productImage[0]}`} />
+                                <img src={`data:image/jpeg;base64,${product.productImage[0]}`} alt="description" />
                             </Link>
                             <div className="content">
                                 <h3>

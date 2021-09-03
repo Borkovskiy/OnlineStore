@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import '../css/Carousel.css'
 import axios from 'axios';
-import { DataContext } from '../DataProvider'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const CarouselList = () => {
-    const { spinner } = useContext(DataContext)
     const [images, setImages] = useState([])
     const [isLoading, setLoading] = useState(true);
 
