@@ -22,7 +22,7 @@ export class Header extends Component {
         const {toggle} = this.state;
         const {cart} = this.context;
         return (
-            <div className="header">
+            <div className="header sticky">
                 <div className="menu" onClick={this.menuToggle} style={{filter: "brightness(0) invert(1)"}}>
                     <img src={Menu} alt="" width="20" />
                 </div>

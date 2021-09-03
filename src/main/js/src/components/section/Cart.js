@@ -6,8 +6,11 @@ import '../css/Cart.css'
 import Close from '../svg/times-solid.svg'
 
 const Cart = () => {
-    const { cart, increase, decrease, total, removeProduct } = useContext(DataContext)
-    // const { cart, increase, decrease, removeProduct, total } = this.context;
+    const { cart, increase, decrease, total, removeProduct, productIdCount } = useContext(DataContext)
+
+    console.log(productIdCount)
+
+    console.log(cart)
 
     if (cart.length === 0) {
         return <h4 style={{ textAlign: "center" }}>No products</h4>
@@ -42,7 +45,9 @@ const Cart = () => {
                     ))
                 }
                 <div className="total">
-                    <Link to="/payment">Payment</Link>
+                    {/* <Link to="/payment">Payment</Link> */}
+                    {/* <button component={Link} to="/payment" variant="outlined">Payment</button> */}
+                    <button type="submit" variant="outlined">Payment</button>
                     <h4>Total: ${total}</h4>
                 </div>
             </>

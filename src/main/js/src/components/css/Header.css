@@ -7,7 +7,7 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.952);
     opacity: 0.9; 
-    position: sticky;
+    position: fixed;
     z-index: 10;
     top: 0;
     padding: 0 40px;
