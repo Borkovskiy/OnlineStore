@@ -16,8 +16,7 @@ public class Slider {
     @Lob
     private byte[] image;
 
-    public Slider(long id, byte[] image) {
-        this.id = id;
+    public Slider( byte[] image) {
         this.image = image;
     }
 
