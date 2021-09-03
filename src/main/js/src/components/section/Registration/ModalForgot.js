@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { UserContext } from './UserProvider'
 import Alert from '@material-ui/lab/Alert';
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function ModalForgot() {
-    const { show, handleClose, forgotSubmit, setForgotEmail, handleShow, status } = useContext(UserContext)
+    const { show, handleClose, forgotSubmit, setForgotEmail, status } = useContext(UserContext)
 
     const classes = useStyles();
 

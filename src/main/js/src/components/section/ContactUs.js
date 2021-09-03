@@ -33,11 +33,11 @@ function ContactUs() {
                 <div className="text-left">
                     <h3>Customer Care</h3>
                     <p>If you need help placing an order, tracking your delivery or arranging an exchange, we’re here to help.</p>
-                    <p>Email us at <a href="http://gmail.com" target="_blank">customercare@net-a-porter.com</a></p>
+                    <p>Email us at <a href="http://gmail.com" target="_blank" rel="noreferrer">customercare@net-a-porter.com</a></p>
                     <p>You can also contact us via LiveChat. Find us in the bottom right hand corner of the screen when we're available to chat.</p>
                     <h3>Fashion Consultants</h3>
                     <p>Looking to refresh your closet or add the finishing touch to an outfit? Contact our expert Fashion Consultants for assistance.</p>
-                    <p>Email us at <a href="http://gmail.com" target="_blank">fashionconsultant@net-a-porter.com</a></p>
+                    <p>Email us at <a href="http://gmail.com" target="_blank" rel="noreferrer">fashionconsultant@net-a-porter.com</a></p>
                     <p>Call us on <b>0800 044 5701</b> from the United Kingdom, or <b>+44 330 022 5701</b> internationally.</p>
                 </div>
                 <div className="text-right">

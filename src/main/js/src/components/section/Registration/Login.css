@@ -10,3 +10,50 @@
     }
 }
 
+.LogoutButton {
+    text-decoration: none;
+    background: #242424f2;
+    color: white;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition-duration: .2s;
+    margin: 8px 0;
+}
+
+.LogoutButton:hover {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    background: #242424;
+}
+
+.line {
+    text-align: center;
+    overflow: hidden;
+    color: #343a40;
+}
+
+.line p {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+}
+
+.line p:before, .line p:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.54);
+}
+
+.line p:before {
+    right: 100%;
+    left: -1000%;
+}
+
+.line p:after {
+    left: 100%;
+    right: -1000%;
+}

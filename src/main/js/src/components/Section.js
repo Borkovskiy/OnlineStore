@@ -7,7 +7,6 @@ import Payment from './section/Payment/Payment'
 import Login from './section/Registration/Login'
 import SignUp from './section/Registration/SignUp'
 import About from './section/About'
-import Google from './section/Registration/Google'
 import UserProfile from './section/Registration/UserProfile'
 import ResetPassword from './section/Registration/ResetPassword'
 import Contact from './section/ContactUs'
@@ -25,7 +24,6 @@ export class Section extends Component {
                 <Route path="/signup" component={SignUp} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
-                <Route path="/oauth2/authorization/google" component={Google} />
                 <Route path="/user" component={UserProfile} />
                 <Route path="/reset_password" component={ResetPassword} />
             </section>

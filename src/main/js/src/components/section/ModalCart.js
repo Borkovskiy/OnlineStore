@@ -4,7 +4,7 @@ import { DataContext } from '../DataProvider'
 import { Link } from 'react-router-dom'
 
 export function ModalCart() {
-  const { handleClose, show, addToCart } = useContext(DataContext)
+  const { handleClose, show } = useContext(DataContext)
 
   return (
     <>

@@ -8,7 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Details = (props) => {
-    const { addToCart, spinner } = useContext(DataContext)
+    const { addToCart } = useContext(DataContext)
     const [product, setProduct] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [index, setIndex] = useState(0)
@@ -63,7 +63,7 @@ const Details = (props) => {
         <>
             <div className="details" key={id}>
                 <div className="product_img">
-                    <img src={`data:image/jpeg;base64,${productImage[index]}`} />
+                    <img src={`data:image/jpeg;base64,${productImage[index]}`} alt="description" />
                 </div>
                 <div className="box">
                     <div className="row">

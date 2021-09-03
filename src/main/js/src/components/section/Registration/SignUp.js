@@ -17,6 +17,7 @@ const SignUp = () => {
     const headerStyle = { margin: '0' }
     const avatarStyle = { backgroundColor: 'lightseagreen' }
     const marginTop = { marginTop: '5px' }
+    const linkButton = { marginTop: '8px', color: '#343a40', textDecoration: 'underline' }
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -59,7 +60,6 @@ const SignUp = () => {
         }).then(() => {
             console.log('new data added: ', values)
             localStorage.setItem('new data added: ', JSON.stringify(values))
-            // history.push({ pathname: "/user", state: { values: values } })
         })
     }
 
@@ -120,7 +120,7 @@ const SignUp = () => {
                             <FormHelperText><ErrorMessage name="termsAndConditions" /></FormHelperText>
                             <Button type='submit' variant='dark' disabled={props.isSubmitting} onClick={handleShow} className="btn-block">{props.isSubmitting ? "Loading" : "Sign Up"}</Button>
                             <Typography style={{ marginTop: '10px' }}>Already have an account?&nbsp;
-                            <NavLink to="/login">Log in</NavLink>
+                            <NavLink to="/login" style={linkButton}>Log in</NavLink>
                             </Typography>
                         </Form>
                     )}

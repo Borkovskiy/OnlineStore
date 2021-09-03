@@ -49,7 +49,7 @@ section .cart {
     transition-duration: .2s;
 }
 
-.total a:hover {
+.total button:hover {
     text-decoration: none;
     color: white;
     cursor: pointer;

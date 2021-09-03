@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { useHistory } from "react-router-dom";
-import { Button } from 'react-bootstrap'
 import { UserContext } from './UserProvider'
+import './Login.css'
 
 export function Logout() {
   let history = useHistory();
@@ -26,9 +26,9 @@ export function Logout() {
   }
 
   return (
-    <Button type='submit' variant="dark" onClick={handleLogOut}>
+    <button className="LogoutButton" type='submit' onClick={handleLogOut}>
       Logout
-    </Button>
+    </button>
   );
 }
 

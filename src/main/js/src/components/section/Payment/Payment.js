@@ -9,11 +9,9 @@ const Payment = () => {
     const [shippingData, setShippingData] = useState({});
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
     const next = (data) => {
         setShippingData(data)
-
         nextStep();
     }
 
@@ -29,7 +27,6 @@ const Payment = () => {
 
     return (
         <>
-            {/* <h3 style={{ textAlign: "center" }}>Payment</h3> */}
             {activeStep === steps.length ? <Confirmation /> : <Form />}
         </>
     )
