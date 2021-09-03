@@ -5,7 +5,6 @@ import project.store.onlinestore.model.CustomUser;
 import project.store.onlinestore.model.UserOrder;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<UserOrder, Long> {
     List<UserOrder> findUserOrderByCustomUser(CustomUser customUser);

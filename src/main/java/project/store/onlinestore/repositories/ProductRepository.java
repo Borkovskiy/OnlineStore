@@ -2,7 +2,6 @@ package project.store.onlinestore.repositories;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import project.store.onlinestore.enums.ProductStatus;
 import project.store.onlinestore.model.Product;
 

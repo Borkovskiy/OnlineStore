@@ -1,19 +1,15 @@
 package project.store.onlinestore.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import project.store.onlinestore.dto.OrderForUserDTO;
-import project.store.onlinestore.dto.OrderFromUserDTO;
 import project.store.onlinestore.dto.OrderProductDTO;
 import project.store.onlinestore.enums.OrderStatus;
-import project.store.onlinestore.exception.ProductNotFoundException;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Data

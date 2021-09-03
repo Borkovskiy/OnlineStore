@@ -33,8 +33,8 @@ public class OrderController {
 
     @GetMapping("my_orders")
     public List<OrderForUserDTO> getMyOrder(Principal principal) throws UserNotFoundException, OrderNotFoundException {
-        List<OrderForUserDTO> orderForUserDTO=orderService.getMyOrder(principal);
-        if(orderForUserDTO.isEmpty()){
+        List<OrderForUserDTO> orderForUserDTO = orderService.getMyOrder(principal);
+        if (orderForUserDTO.isEmpty()) {
             throw new OrderNotFoundException();
         }
         return orderForUserDTO;
@@ -56,8 +56,9 @@ public class OrderController {
     public ResponseEntity<ResultDTO> productNotFoundException() {
         return new ResponseEntity<>(new BadRequestResult("product not found"), HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(OrderNotFoundException.class)
-    public ResponseEntity<ResultDTO> orderNotFoundException(){
+    public ResponseEntity<ResultDTO> orderNotFoundException() {
         return new ResponseEntity<>(new BadRequestResult("order not found"), HttpStatus.NOT_FOUND);
     }
 
