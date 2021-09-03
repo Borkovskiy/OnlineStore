@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminController {
 

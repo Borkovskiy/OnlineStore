@@ -16,7 +16,6 @@ import java.security.Principal;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 public class AuthController {
 
     private final UserService userService;
