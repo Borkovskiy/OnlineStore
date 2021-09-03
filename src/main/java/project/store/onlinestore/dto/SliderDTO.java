@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Base64;
-import java.util.HashMap;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +21,6 @@ public class SliderDTO {
     }
 
     public static String toBaseImage(byte[] image) {
-        String base64Image = Base64.getEncoder().encodeToString(image);
-        return base64Image;
+        return Base64.getEncoder().encodeToString(image);
     }
 }

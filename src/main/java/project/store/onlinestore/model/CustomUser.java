@@ -24,7 +24,7 @@ public class CustomUser {
     private String email;
     private String phoneNumber;
     private String password;
-    private String name;
+    private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -35,7 +35,7 @@ public class CustomUser {
     private String resetPasswordToken;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customUser")
-    private List<UserOrder> UserOrders= new ArrayList<>();
+    private List<UserOrder> userOrders = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "customUser")
     private Address address;
@@ -48,10 +48,20 @@ public class CustomUser {
 
     public CustomUser(String email, String name) {
         this.email = email;
-        this.name = name;
+        this.firstName = name;
     }
-    public UserInfoDTO toUserInfoDTO(){
-        if(address==null)return UserInfoDTO.of(name,lastName,email);
-        return UserInfoDTO.of(name,lastName,address.getAddress(),address.getRegion(),email,address.getShippingCountry(),address.getPostalCode(),address.getCity());
+
+    public UserInfoDTO toUserInfoDTO() {
+        if (address == null) return UserInfoDTO.of(firstName, lastName, email);
+        return UserInfoDTO.of(firstName, lastName, address.getAddress(), address.getRegion(), email, address.getShippingCountry(), address.getPostalCode(), address.getCity());
+    }
+
+    public void addAddress(Address address) {
+        this.address = address;
+        address.setCustomUser(this);
+    }
+
+    public void addUserOrder(UserOrder userOrder) {
+        this.userOrders.add(userOrder);
     }
 }

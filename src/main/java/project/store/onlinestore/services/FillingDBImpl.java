@@ -17,6 +17,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
+
 //Class for initialising DB with DEMO products and sliders
 @Service
 public class FillingDBImpl implements FillingDB {
@@ -77,12 +78,11 @@ public class FillingDBImpl implements FillingDB {
     private void addImage(int i, Product product) {
         File folder = new File("product" + i);
         //need sorting because sending to heroku- unsorted files
-        List<File> files= Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
+        List<File> files = Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
                 .collect(Collectors.toList());
 
         for (File f : files) {
             try {
-                System.out.println(f.getName());
                 byte[] fByte = fileToByte(f);
                 product.addImage(fByte);
             } catch (IOException e) {
@@ -102,7 +102,6 @@ public class FillingDBImpl implements FillingDB {
         File folder = new File("slider");
         for (File f : folder.listFiles()) {
             int number = parseInt(f.getName());
-            System.out.println(number);
             try {
                 byte[] fByte = fileToByte(f);
                 Slider slider = new Slider(number, fByte);

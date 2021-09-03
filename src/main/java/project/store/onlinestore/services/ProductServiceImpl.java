@@ -27,15 +27,17 @@ public class ProductServiceImpl implements ProductService {
         this.sliderRepository = sliderRepository;
     }
 
-    @Transactional
+
     @Override
+    @Transactional
     public void addProduct(Product product) {
 
         productRepository.save(product);
     }
 
-    @Transactional(readOnly = true)
+
     @Override
+    @Transactional(readOnly = true)
     public List<ProductInfoDTO> getAllProduct(Pageable pageable) {
         List<ProductInfoDTO> result = new ArrayList<>();
         List<Product> products = productRepository.findProductByProductStatus(pageable, ProductStatus.ACTIVE);
@@ -43,16 +45,17 @@ public class ProductServiceImpl implements ProductService {
         return result;
     }
 
-    @Transactional(readOnly = true)
+
     @Override
+    @Transactional(readOnly = true)
     public Long count() {
         return productRepository.count();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public ProductInfoDTO getProduct(long id) throws ProductNotFoundException {
-        Product product = productRepository.findById(id).orElseThrow(()->
+    public ProductInfoDTO getProductInfoDTO(long id) throws ProductNotFoundException {
+        Product product = productRepository.findById(id).orElseThrow(() ->
                 new ProductNotFoundException("Product doesnt exist "));
         return product.toProductInfoDTO();
     }
@@ -61,15 +64,23 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public List<SliderDTO> getSlider() {
         List<SliderDTO> result = new ArrayList<>();
-        List<Slider> sliders= sliderRepository.findAll();
-        sliders.forEach((s)-> result.add(s.toSliderDTO()));
+        List<Slider> sliders = sliderRepository.findAll();
+        sliders.forEach((s) -> result.add(s.toSliderDTO()));
         return result;
 
     }
-    @Transactional
-    @Override
-    public void addSlider(Slider slider) {
 
+
+    @Override
+    @Transactional
+    public void addSlider(Slider slider) {
         sliderRepository.save(slider);
+    }
+
+    @Override
+    @Transactional
+    public Product getProduct(Long productsID) throws ProductNotFoundException {
+        return productRepository.findById(productsID).orElseThrow(() ->
+                new ProductNotFoundException("Product doesnt exist "));
     }
 }

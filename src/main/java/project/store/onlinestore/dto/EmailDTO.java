@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmailDTO {
     private String email;
-
     public EmailDTO(String email) {
         this.email = email;
     }

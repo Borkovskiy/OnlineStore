@@ -27,25 +27,21 @@ public class Product {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private List<ProductImage> productImages=new ArrayList<>();
+    private List<ProductImage> productImages = new ArrayList<>();
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private List<OrderProduct> orderProducts= new ArrayList<>();
+    private List<OrderProduct> orderProducts = new ArrayList<>();
 
 
-
-    public Product( String name, double price, String color, String shortDescription, String description, ProductStatus productStatus) {
+    public Product(String name, double price, String color, String shortDescription, String description, ProductStatus productStatus) {
         this.name = name;
         this.price = price;
         this.color = color;
         this.shortDescription = shortDescription;
         this.description = description;
-        this.productStatus= productStatus;
+        this.productStatus = productStatus;
     }
-
-
-
 
 
     public ProductInfoDTO toProductInfoDTO() {
@@ -53,7 +49,7 @@ public class Product {
     }
 
     public void addImage(byte[] image) {
-        productImages.add(new ProductImage(this,image));
+        productImages.add(new ProductImage(this, image));
 
     }
 }

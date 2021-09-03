@@ -15,7 +15,7 @@ public class Slider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Lob
-    private byte [] image;
+    private byte[] image;
 
     public Slider(long id, byte[] image) {
         this.id = id;

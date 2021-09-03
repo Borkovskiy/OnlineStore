@@ -9,7 +9,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 public class OrderFromUserDTO {
-    Map<Long,Integer> products= new HashMap<>();
+    Map<Long, Integer> products = new HashMap<>();
 
     private String firstName;
     private String lastName;
