@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,9 +20,8 @@ public class Address {
     @JoinColumn(name = "customUser_id")
     private CustomUser customUser;
 
-    @OneToMany
-    (cascade = CascadeType.ALL, mappedBy = "address")
-    private List<UserOrder> userOrder;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
+    private List<UserOrder> userOrder = new ArrayList<>();
 
 
     private String address;
@@ -31,4 +31,7 @@ public class Address {
     private String city;
 
 
+    public void addUserOrder(UserOrder userOrder) {
+        this.userOrder.add(userOrder);
+    }
 }

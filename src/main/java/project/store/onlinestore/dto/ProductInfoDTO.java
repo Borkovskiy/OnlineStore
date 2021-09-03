@@ -6,7 +6,6 @@ import project.store.onlinestore.model.ProductImage;
 
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
 
 

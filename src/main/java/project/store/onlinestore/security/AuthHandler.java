@@ -28,18 +28,13 @@ public class AuthHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException {
-        OAuth2AuthenticationToken token = (OAuth2AuthenticationToken)authentication;
+        OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
         OAuth2User user = token.getPrincipal();
-
         Map<String, Object> attributes = user.getAttributes();
-
         String email = (String) attributes.get("email");
         String name = (String) attributes.get("name");
-        CustomUser customUser= new CustomUser(email,name);
+        CustomUser customUser = new CustomUser(email, name);
         userService.addUser(customUser, Provider.GOOGLE);
-
-
-
         httpServletResponse.sendRedirect("/user");
     }
 }

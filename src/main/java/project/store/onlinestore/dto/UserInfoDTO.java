@@ -34,10 +34,10 @@ public class UserInfoDTO {
     }
 
     public static UserInfoDTO of(String name, String lastName, String address, String region, String email, String shippingCountry, String postalCode, String city) {
-        return new UserInfoDTO(name, lastName, address,  region, email, shippingCountry, postalCode, city);
+        return new UserInfoDTO(name, lastName, address, region, email, shippingCountry, postalCode, city);
     }
 
     public static UserInfoDTO of(String name, String lastName, String email) {
-        return  new UserInfoDTO(name,lastName,email);
+        return new UserInfoDTO(name, lastName, email);
     }
 }

@@ -2,6 +2,7 @@ package project.store.onlinestore.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import project.store.onlinestore.dto.OrderProductDTO;
 
 import javax.persistence.*;
 
@@ -23,4 +24,17 @@ public class OrderProduct {
 
     private double price;
     private int quantity;
+
+
+    public OrderProduct(UserOrder userOrder, Product product, double price, int quantity) {
+        this.userOrder = userOrder;
+        this.product = product;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+
+    public OrderProductDTO toOrderProductDTO() {
+        return OrderProductDTO.of(product.getId(), price, quantity);
+    }
 }

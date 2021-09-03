@@ -51,7 +51,7 @@ public class StoreController {
     @GetMapping("products/{id}")
     public ProductInfoDTO getProduct(
             @PathVariable(value = "id") long productId) throws ProductNotFoundException {
-        return productServices.getProduct(productId);
+        return productServices.getProductInfoDTO(productId);
     }
     @GetMapping("slider")
     public List<SliderDTO> slider() {

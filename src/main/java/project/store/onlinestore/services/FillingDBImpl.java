@@ -1,7 +1,6 @@
 package project.store.onlinestore.services;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.store.onlinestore.enums.ProductStatus;
 import project.store.onlinestore.enums.Provider;
@@ -13,10 +12,12 @@ import project.store.onlinestore.model.Slider;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.parseInt;
 //Class for initialising DB with DEMO products and sliders
 @Service
 public class FillingDBImpl implements FillingDB {
@@ -77,12 +78,11 @@ public class FillingDBImpl implements FillingDB {
     private void addImage(int i, Product product) {
         File folder = new File("product" + i);
         //need sorting because sending to heroku- unsorted files
-        List<File> files= Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
+        List<File> files = Arrays.asList(folder.listFiles()).stream().sorted(Comparator.comparing(File::getName))
                 .collect(Collectors.toList());
 
         for (File f : files) {
             try {
-                System.out.println(f.getName());
                 byte[] fByte = fileToByte(f);
                 product.addImage(fByte);
             } catch (IOException e) {
@@ -101,11 +101,9 @@ public class FillingDBImpl implements FillingDB {
     private void saveToBaseSlider() {
         File folder = new File("slider");
         for (File f : folder.listFiles()) {
-            int number = parseInt(f.getName());
-            System.out.println(number);
             try {
                 byte[] fByte = fileToByte(f);
-                Slider slider = new Slider(number, fByte);
+                Slider slider = new Slider( fByte);
                 productService.addSlider(slider);
 
             } catch (IOException e) {

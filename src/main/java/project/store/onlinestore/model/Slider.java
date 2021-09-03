@@ -9,16 +9,14 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-
 public class Slider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Lob
-    private byte [] image;
+    private byte[] image;
 
-    public Slider(long id, byte[] image) {
-        this.id = id;
+    public Slider( byte[] image) {
         this.image = image;
     }
 

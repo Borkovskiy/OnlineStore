@@ -17,7 +17,7 @@ public class ProductImage {
     private Product product;
 
     @Lob
-    private byte [] image;
+    private byte[] image;
 
     public ProductImage(Product product, byte[] image) {
         this.product = product;
